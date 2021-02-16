@@ -70,6 +70,10 @@ const createCard = async (card) =>{
     return await axios.post(BASE_URL+"/card/",card);
 }
 
+const createProfession = async (profession) =>{
+    return await axios.post(BASE_URL+"/profession/",profession);
+}
+
 
 
 
@@ -89,6 +93,7 @@ export {
     getIsGameHistoryActiveByExerciseIdAndUserId,
     validateAnswer,
     deleteAllGameHistoryByUserId,
-    createCard
+    createCard,
+    createProfession
 
 };

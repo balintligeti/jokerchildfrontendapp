@@ -10,6 +10,7 @@ import Answer from "./1big/Answer"
 import Statistics from "./1big/Statistics"
 import AddCard from "./1big/AddCard"
 import ProfilePage from "./1big/ProfilePage";
+import AddProfession from "./1big/AddProfession";
 
 
 const App = () => {
@@ -24,8 +25,9 @@ const App = () => {
                 <Route exact path='/questions' component ={Questions}></Route>
                 <Route exact path='/answer/:questionId' component ={Answer}></Route>
                 <Route exact path='/statistics' component ={Statistics}></Route>
-                <Route exact path='/addcard' component={AddCard}></Route>
                 <Route exact path='/profil' component={ProfilePage}></Route>
+                <Route exact path='/addcard' component={AddCard}></Route>
+                <Route exact path='/addprofession' component={AddProfession}></Route>
 
             </div>
           </div>
