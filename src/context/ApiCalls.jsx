@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 //const BASE_URL="https://joker-child-spring.herokuapp.com";
 const BASE_URL="http://localhost:8080";
 
@@ -46,6 +47,7 @@ const getIsSessionActiveByUserId = async (userId) =>{
     return await axios.get(BASE_URL+"/gameSession/isActive?userId="+userId);
 }
 
+
 const createGameHistory = async (gameHistory) =>{
     return await axios.post(BASE_URL+"/gameHistory/",gameHistory);
 }
@@ -61,6 +63,11 @@ const validateAnswer = async (userId,exerciseId,isPassed) =>{
 
 const deleteAllGameHistoryByUserId = async (userId) =>{
     return await axios.delete(BASE_URL+"/gameHistory/allGameHistoryByUserId?userId="+userId);
+}
+
+
+const createCard = async (card) =>{
+    return await axios.post(BASE_URL+"/card/",card);
 }
 
 
@@ -81,6 +88,7 @@ export {
     createGameHistory,
     getIsGameHistoryActiveByExerciseIdAndUserId,
     validateAnswer,
-    deleteAllGameHistoryByUserId
-    
+    deleteAllGameHistoryByUserId,
+    createCard
+
 };
