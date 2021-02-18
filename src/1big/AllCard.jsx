@@ -11,7 +11,6 @@ export default function AllCard() {
 
     return (
         <div>
-            <p>{cards.map(card => <p>{card.identificationId}</p>)}</p>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
