@@ -6,7 +6,7 @@ export default function Statistics() {
 
     const [playerXp,setPlayerXp]=useState(null);
     const [answeredQuestions,setAnsweredQuestions]=useState(null)
-    const [isRenderable,setIsRenderable]=useState(true);
+    const [isRenderable]=useState(true);
 
     useEffect(()=>{
         getXpByMemberId(0)// "0" is Viki atm, need to do a fix dummy user
