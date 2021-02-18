@@ -10,19 +10,21 @@ export default function AddProfession() {
 
     const [name,setName]=useState();
     const [picture,setPicture]=useState();
-    const [description,setDescription]=useState();
+    const [description,setDescription]=useState("test");
 
 
     const createNewProfession= () =>{
 
+        let test="Works";
+
         let profession={
-            "description": description,
             "name": name,
-            "picture": "TODO"
+            "picture": "TODO",
+            "description":description
           }
 
         createProfession(profession)
-            .then((data)=>console.log(data))//window.location.reload());        
+            .then((data)=>window.location.reload());     
     }
 
 
