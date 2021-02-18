@@ -4,7 +4,7 @@ import PurpleButton from "../1small/PurpleButton";
 import "./getId.css";
 import "./answer.css";
 import "./questions.css";
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {getSessionsCardByUserId} from "../context/ApiCalls";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PopupButton from "../1small/PopupButton";

@@ -38,7 +38,7 @@ export default function PopupButton(props) {
 
     const validate = () => {
         const selectedItems = [];
-        props.selectedW.map(item => {
+        props.selectedW.forEach(item => {
             selectedItems.push(item.content)
         })
         if(JSON.stringify(selectedItems.sort()) === JSON.stringify(props.goodW.sort())) {
