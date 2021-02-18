@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
-import { createCard } from '../context/ApiCalls';
+import { createCardWithExistingProfession,getAllProfessions } from '../context/ApiCalls';
 
 
 
 export default function AddCard() {
 
+    const [professions,setProfessions]=useState(null);
+
     const [cardId,setCardId]=useState();
+    const [professionId,setProfessionId]=useState();
 
     const [question0,setQuestion0]=useState();
     const [question1,setQuestion1]=useState();
@@ -24,6 +27,14 @@ export default function AddCard() {
     const [assistance0,setAssistance0]=useState();
     const [assistance1,setAssistance1]=useState();
     const [assistance2,setAssistance2]=useState();
+
+    useEffect(()=>{
+        getAllProfessions()
+            .then((data)=>{
+                setProfessions(data.data);
+                setProfessionId(data.data[0].id) //need for avoinding the undifined value if we choose the default option
+            });
+    },[])
 
     const createNewCard = () =>{
         let answer0=rightAnswers0+";"+wrongAnswers0;
@@ -49,27 +60,36 @@ export default function AddCard() {
                   }
                 ],
                 "identificationId": cardId,
-                "profession": {
-                  "description": "TODO",
-                  "name": "TODO",
-                  "picture": "TODO"
-                }
               }
 
-        createCard(card)
-            .then(window.location.reload());        
+            createCardWithExistingProfession(card,professionId)
+                .then(window.location.reload());     
     }
-
-
 
     return (
         <div>
-            <h1>Itt tudsz hozzáadni új kártyát a játékhoz!</h1>
+            {
+                professions===null ? (
+                    <h1>Oldal betöltése</h1>
+                ) 
+                : 
+                (
+                    <div>
+                        <h1>Itt tudsz hozzáadni új kártyát a játékhoz!</h1>
             <div>
                 <div>
                     <p>Kártya azonosító megadása:</p>
                     <input onChange={event=>setCardId(event.target.value)} type="text" name="id" />
                 </div>
+                <Form.Group>
+                    <Form.Label>Szakma</Form.Label>
+                    <Form.Control as="select" onChange={event=>setProfessionId(event.target.value)} defaultValue="Szakma">
+                        {professions.map((profession)=>
+                            <option value={profession.id}>{profession.name}</option>
+                        )}
+
+                    </Form.Control>
+                </Form.Group>
                 <Accordion>
                     <Card>
                         <Card.Header>
@@ -77,10 +97,11 @@ export default function AddCard() {
                                Kérdés megadásához kattints ide!
                             </Accordion.Toggle>
                         </Card.Header>
+                        
                         <Accordion.Collapse eventKey="0">
                             <Card.Body>
                             <Form>
-                                    <Form.Group controlId="formBasicEmail">
+                                    <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
                                         <Form.Control onChange={event=>setQuestion0(event.target.value)} type="question" placeholder="Írd ide a kérdést!"/>
                                         
@@ -194,6 +215,10 @@ export default function AddCard() {
                 </Accordion>
                 <PurpleButton onClick={createNewCard} text="Kártya hozzáadása" />
             </div>
+                    </div>
+                )
+            }
+            
         </div>
     )
 }

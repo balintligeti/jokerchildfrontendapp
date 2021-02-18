@@ -15,7 +15,6 @@ export default function AddProfession() {
 
     const createNewProfession= () =>{
 
-        let test="Works";
 
         let profession={
             "name": name,
