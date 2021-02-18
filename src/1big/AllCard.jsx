@@ -17,8 +17,7 @@ export default function AllCard() {
     }, [])
 
     const modifyCard = (cardId) =>{
-        console.log(cardId);
-        //history.push(`/modifycard/${cardId}`)
+        history.push(`/modifycard/${cardId}`)
     }
 
     return (

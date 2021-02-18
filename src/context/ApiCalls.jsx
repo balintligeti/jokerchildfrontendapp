@@ -73,6 +73,9 @@ const createCard = async (card) =>{
     return await axios.post(BASE_URL+"/card/",card);
 }
 
+const getCardById = async (cardId) =>{
+    return await axios.get(BASE_URL+"/card/?id="+cardId);
+}
 
 
 
@@ -94,4 +97,5 @@ export {
     deleteAllGameHistoryByUserId,
     createCard,
     getAllCards,
+    getCardById,
 };
