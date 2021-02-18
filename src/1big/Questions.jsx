@@ -1,4 +1,4 @@
-import React,{useContext, useState, useEffect} from 'react'
+import React,{useState, useEffect} from 'react'
 import PurpleButton from "../1small/PurpleButton"
 import "../1medium/pinkInfo.css"
 import urhajos from "../pics/urhajos.png"
@@ -23,9 +23,7 @@ export default function Questions() {
 
     const [isRenderable,setIsRenderable]=useState(false);
  
-    const [gameHistory,setGameHistory]=useState(null);
 
-    const [userId,setUserId]=useState(0); //TODO:getfrom userToken
 
     
     const answerQuestion = (questionId) =>{
@@ -63,7 +61,7 @@ export default function Questions() {
             .then((data)=>{
                 setCard(data.data);
     
-                data.data.exercises.map((exercise)=>{
+                data.data.exercises.forEach((exercise)=>{
                     getExperienceByExerciseIdAndUserId(exercise.id,0) // 0 will be the userId
                     .then((data2)=>{                        
                         dict2.set(exercise.id,data2.data);
@@ -84,7 +82,7 @@ export default function Questions() {
     return (
         
         <div>
-            {card==null || isRenderable==false ? 
+            {card===null || isRenderable===false ? 
             
             (<div><p>Kártya betöltése</p></div>) 
             :
