@@ -21,8 +21,8 @@ export default function AllCard() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cards.map(card => (
-                        <tr>
+                    {cards.map((card,key) => (
+                        <tr key={key}>
                             <td>{card.identificationId}</td>
                             <td>{card.profession.name}</td>
                             <td>edit</td>
