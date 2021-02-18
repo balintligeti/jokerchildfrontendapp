@@ -7,7 +7,6 @@ import {validateAnswer} from "../context/ApiCalls"
 
 export default function PopupButton(props) {
     let counter = 0;
-    let tryings = 0;
     const history=useHistory();
 
     const goodAnswers = () => {
@@ -19,9 +18,6 @@ export default function PopupButton(props) {
         })
     }
 
-    const clicked = () => {
-        tryings++;
-    }
 
     const setContent = () => {
         if (props.goodW.length === props.selectedW.length) {
@@ -53,7 +49,6 @@ export default function PopupButton(props) {
         }
         else{
             validateAnswer(0,props.exerciseId,false)//TODO 0 is only a hardcoded value need to swich if login is implemented
-
         }
     }
 
@@ -63,7 +58,7 @@ export default function PopupButton(props) {
             on='click'
             positionFixed
             className='popup'
-            trigger={<Button  style={{ color: 'white', background: '#7749f8', fontFamily: 'sans-serif', fontWeight: "bolder", borderRadius: "10px" }} onClick={clicked, validate}>{props.text}</Button>}
+            trigger={<Button  style={{ color: 'white', background: '#7749f8', fontFamily: 'sans-serif', fontWeight: "bolder", borderRadius: "10px" }} onClick={validate}>{props.text}</Button>}
         />
 
     )

@@ -12,7 +12,6 @@ import PopupButton from "../1small/PopupButton";
 
 export default function DndTest(props) {
 
-    const history=useHistory();
     const questionId=props.match.params.questionId
 
     const [question,setQuestion]=useState(null);
@@ -36,7 +35,7 @@ export default function DndTest(props) {
                     }
                 })
             })           
-    },[])
+    },[questionId])
     
     const [state,setState] = useState({
         words: [],
