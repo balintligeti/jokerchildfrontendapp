@@ -61,7 +61,6 @@ export default function AddCard() {
     }
 
 
-
     return (
         <div>
             <h1>Itt tudsz hozzáadni új kártyát a játékhoz!</h1>

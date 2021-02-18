@@ -3,13 +3,23 @@ import { getAllCards } from "../context/ApiCalls"
 import { Table } from 'react-bootstrap';
 import PurpleButton from '../1small/PurpleButton';
 import PinkInfo from '../1medium/PinkInfo';
+import { useHistory } from 'react-router-dom'
 
 export default function AllCard() {
+    
     const [cards, setCards] = useState([])
+
+    const history=useHistory();
+
     useEffect(() => {
         getAllCards()
             .then(res => setCards(res.data));
     }, [])
+
+    const modifyCard = (cardId) =>{
+        console.log(cardId);
+        //history.push(`/modifycard/${cardId}`)
+    }
 
     return (
         <div>
@@ -27,8 +37,8 @@ export default function AllCard() {
                     {cards.map((card,key) => (
                         <tr key={key}>
                             <td>{card.identificationId}</td>
-                            <td>{card.profession.name}</td>
-                            <td>edit</td>
+                            <td>{card.profession.name}</td>                           
+                            <td><PurpleButton id={card.id} onClick={event=>modifyCard(event.target.id)} text="Szerkesztés"/></td>
                             <td>x</td>
                         </tr>
                     ))}
