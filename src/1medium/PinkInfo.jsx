@@ -8,7 +8,7 @@ export default function PinkInfo(props) {
         <div className='test'>
             <p style={{fontSize:"50px"}}>{props.title}</p>
             <p>{props.text}</p>
-            <p>{props.ansOptions} választ kell kiválasztanod.</p>
+            <p>{props.ansOptions}</p>
         </div>
     )
 }

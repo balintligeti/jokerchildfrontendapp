@@ -1,6 +1,8 @@
 import React,{useState, useEffect}from 'react'
 import { getAllCards } from "../context/ApiCalls"
 import { Table } from 'react-bootstrap';
+import PurpleButton from '../1small/PurpleButton';
+import PinkInfo from '../1medium/PinkInfo';
 
 export default function AllCard() {
     const [cards, setCards] = useState([])
@@ -11,6 +13,7 @@ export default function AllCard() {
 
     return (
         <div>
+            <PinkInfo title="Kártyák listája" />
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
@@ -31,6 +34,9 @@ export default function AllCard() {
                     ))}
                 </tbody>
             </Table>
+            <div style={{marginTop: "20px", alignContent:"left"}}>
+                <a href="/addcard"><PurpleButton text="Kártya hozzáadása" /></a>
+            </div>
         </div>
     )
 }
