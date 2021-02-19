@@ -56,7 +56,8 @@ export default function ModifyCard(props) {
     },[])
 
     const modifyCard = () =>{
-        console.log("Todo")
+        
+        console.log(identificationId)
     }
 
     return(
@@ -189,7 +190,7 @@ export default function ModifyCard(props) {
                         </Accordion.Collapse>
                     </Card>
                 </Accordion>
-                <PurpleButton onClick={modifyCard} text="Kártya hozzáadása" />
+                <PurpleButton onClick={modifyCard} text="Kártya módosítása"/>
             </div>
         </div>
 

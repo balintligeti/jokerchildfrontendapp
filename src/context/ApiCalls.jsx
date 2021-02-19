@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 //const BASE_URL="https://joker-child-spring.herokuapp.com";
-const BASE_URL="https://joker-child-spring.herokuapp.com";
+const BASE_URL="http://localhost:8080";
 
 const POST_CONFIG={"Content-Type": "application/json"}
 
