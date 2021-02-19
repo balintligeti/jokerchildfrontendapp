@@ -1,5 +1,5 @@
 import React,{useState, useEffect}from 'react'
-import { getAllCards } from "../context/ApiCalls"
+import { getAllCards, deleteCard } from "../context/ApiCalls"
 import { Table } from 'react-bootstrap';
 import PurpleButton from '../1small/PurpleButton';
 import PinkInfo from '../1medium/PinkInfo';
@@ -16,6 +16,8 @@ export default function AllCard() {
             .then(res => setCards(res.data));
     }, [])
 
+    const deleteOneCard = (id) => {
+        deleteCard(id);
     const modifyCard = (cardId) =>{
         history.push(`/modifycard/${cardId}`)
     }
@@ -36,9 +38,10 @@ export default function AllCard() {
                     {cards.map((card,key) => (
                         <tr key={key}>
                             <td>{card.identificationId}</td>
+
                             <td>{card.profession.name}</td>                           
                             <td><PurpleButton id={card.id} onClick={event=>modifyCard(event.target.id)} text="Szerkesztés"/></td>
-                            <td>x</td>
+                            <td onClick={deleteOneCard(card.id)}>x</td>
                         </tr>
                     ))}
                 </tbody>
