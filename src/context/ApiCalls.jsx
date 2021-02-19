@@ -73,9 +73,15 @@ const createCard = async (card) =>{
     return await axios.post(BASE_URL+"/card/",card);
 }
 
+
+const createProfession = async (profession) =>{
+    return await axios.post(BASE_URL+"/profession/",profession);
+}
+
 const getCardById = async (cardId) =>{
     return await axios.get(BASE_URL+"/card/?id="+cardId);
 }
+
 
 
 
@@ -96,6 +102,8 @@ export {
     validateAnswer,
     deleteAllGameHistoryByUserId,
     createCard,
+    createProfession
     getAllCards,
     getCardById,
+
 };
