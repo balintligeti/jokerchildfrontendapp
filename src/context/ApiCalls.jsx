@@ -6,9 +6,12 @@ const BASE_URL="http://localhost:8080";
 
 const POST_CONFIG={"Content-Type": "application/json"}
 
+const getAllCards = async () => {
+    return await axios.get(BASE_URL + '/card/all');
+}
+
 const getCardByIdentificationId = async (identificationId) =>{
-    return await axios.get(BASE_URL+"/card/byIdentificationId?identificationId="+identificationId)
-    ;
+    return await axios.get(BASE_URL+"/card/byIdentificationId?identificationId="+identificationId);
 }
 
 const getSessionByUserId = async (userId) =>{
@@ -70,13 +73,20 @@ const createCardWithExistingProfession = async (card,professionId) =>{
     return await axios.post(BASE_URL+"/card/withProfession?professionId="+professionId,card);
 }
 
+
 const createProfession = async (profession) =>{
     return await axios.post(BASE_URL+"/profession/",profession);
 }
 
+
 const getAllProfessions = async () =>{
     return await axios.get(BASE_URL+"/profession/all");
 }
+
+const getCardById = async (cardId) =>{
+    return await axios.get(BASE_URL+"/card/?id="+cardId);
+}
+
 
 
 
@@ -98,6 +108,9 @@ export {
     deleteAllGameHistoryByUserId,
     createCardWithExistingProfession,
     createProfession,
-    getAllProfessions
+    getAllProfessions,
+    getAllCards,
+    getCardById,
+
 
 };
