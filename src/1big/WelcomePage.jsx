@@ -3,7 +3,6 @@ import "../game.css"
 import PinkInfo from "../1medium/PinkInfo"
 import PurpleButton from "../1small/PurpleButton"
 import MiniCard from "../1small/MiniCard"
-import GetId from "./GetId";
 import { useHistory } from 'react-router-dom'
 
 

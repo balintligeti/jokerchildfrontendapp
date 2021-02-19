@@ -23,7 +23,7 @@ export default function Navbar1() {
         <Navbar collapseOnSelect expand="lg"  style={{backgroundColor: "#7749f8", borderRadius: "20px", marginTop:"1vw", marginLeft:'1vw', marginRight: '1vw', fontFamily:"Courier New, courier, monospace", fontSize:'1vw'}} variant="dark">
         <Nav className="m-auto">
           <Nav.Link href="/">Kezdőlap</Nav.Link>
-          {isSessionActive==true ? (
+          {isSessionActive===true ? (
             <Nav.Link href="/questions">Játék</Nav.Link>
           )
           :

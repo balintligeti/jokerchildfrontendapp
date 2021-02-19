@@ -4,7 +4,7 @@ import PurpleButton from "../1small/PurpleButton";
 import "./getId.css";
 import "./answer.css";
 import "./questions.css";
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {getSessionsCardByUserId} from "../context/ApiCalls";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PopupButton from "../1small/PopupButton";
@@ -12,7 +12,6 @@ import PopupButton from "../1small/PopupButton";
 
 export default function DndTest(props) {
 
-    const history=useHistory();
     const questionId=props.match.params.questionId
 
     const [question,setQuestion]=useState(null);
@@ -36,7 +35,7 @@ export default function DndTest(props) {
                     }
                 })
             })           
-    },[])
+    },[questionId])
     
     const [state,setState] = useState({
         words: [],
@@ -166,7 +165,7 @@ export default function DndTest(props) {
     // But in this example everything is just done in one place for simplicity
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <PinkInfo text={question} ansOptions={state.goodWords.length}/>
+            <PinkInfo text={question} ansOptions={`${state.goodWords.length} választ kell megadnod.`}/>
             <div className="inline">
             
             <Droppable droppableId="droppable">
