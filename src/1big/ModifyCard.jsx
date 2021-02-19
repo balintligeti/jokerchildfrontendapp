@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
-import { getCardById,getAllProfessions } from '../context/ApiCalls';
+import { getCardById,getAllProfessions,updateCardWithExistingProfession } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom'
 
 
@@ -14,6 +14,10 @@ export default function ModifyCard(props) {
     const [professionName,setProfessionName]=useState();
 
     const [identificationId,setIdentificationId]=useState();
+
+    const [exerciseId0,setExerciseId0]=useState();
+    const [exerciseId1,setExerciseId1]=useState();
+    const [exerciseId2,setExerciseId2]=useState();
 
     const [question0,setQuestion0]=useState();
     const [question1,setQuestion1]=useState();
@@ -39,6 +43,10 @@ export default function ModifyCard(props) {
                 setQuestion0(data.data.exercises[0].question);
                 setQuestion1(data.data.exercises[1].question);
                 setQuestion2(data.data.exercises[2].question);
+
+                setExerciseId0(data.data.exercises[0].id);
+                setExerciseId1(data.data.exercises[1].id);
+                setExerciseId2(data.data.exercises[2].id);
                 
                 let allWords=data.data.exercises[0].answer.split(";");
                 setRightAnswers0(allWords[0].split(","));
@@ -64,7 +72,6 @@ export default function ModifyCard(props) {
                         let list=data1.data;
                         let newList = list.filter(element=>element.id!==data.data.profession.id);
                         setProfessions(newList);
-                       // setProfessionId(data.data.profession.id) //need for avoinding the undifined value if we choose the default option
             });
 
             })
@@ -81,27 +88,29 @@ export default function ModifyCard(props) {
             "id":cardId,
             "exercises": [
               {
+                "id": exerciseId0,
                 "answer": answer0,
                 "assistance": assistance0,
                 "question": question0
               },
               {
+                "id":exerciseId1,
                 "answer": answer1,
                 "assistance": assistance1,
                 "question": question1
               },
               {
+                "id":exerciseId2,
                 "answer": answer2,
                 "assistance": assistance2,
                 "question": question2
               }
             ],
-            "identificationId": cardId,
+            "identificationId": identificationId,
           }
-        //updateCardWithExistingProfession(card)
+        updateCardWithExistingProfession(card,professionId)
+        .then(res=>console.log(res))
 
-        console.log(card)
-        console.log(professionId)
 
     }
 

@@ -39,7 +39,6 @@ export default function AllCard() {
                     {cards.map((card,key) => (
                         <tr key={key}>
                             <td>{card.identificationId}</td>
-
                             <td>{card.profession.name}</td>                           
                             <td><PurpleButton id={card.id} onClick={event=>modifyCard(event.target.id)} text="Szerkesztés"/></td>
                             <td onClick={event=>(deleteOneCard(card.id))}>x</td>
