@@ -1,10 +1,13 @@
 import axios from "axios";
 
-
 //const BASE_URL="https://joker-child-spring.herokuapp.com";
 const BASE_URL="https://joker-child-spring.herokuapp.com";
 
 const POST_CONFIG={"Content-Type": "application/json"}
+
+const deleteCard = async (id) => {
+    return await axios.delete(BASE_URL+"/card/?id="+id);
+}
 
 const getAllCards = async () => {
     return await axios.get(BASE_URL + '/card/all');
@@ -94,4 +97,5 @@ export {
     deleteAllGameHistoryByUserId,
     createCard,
     getAllCards,
+    deleteCard,
 };

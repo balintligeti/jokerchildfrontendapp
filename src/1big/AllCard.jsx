@@ -1,5 +1,5 @@
 import React,{useState, useEffect}from 'react'
-import { getAllCards } from "../context/ApiCalls"
+import { getAllCards, deleteCard } from "../context/ApiCalls"
 import { Table } from 'react-bootstrap';
 import PurpleButton from '../1small/PurpleButton';
 import PinkInfo from '../1medium/PinkInfo';
@@ -10,6 +10,10 @@ export default function AllCard() {
         getAllCards()
             .then(res => setCards(res.data));
     }, [])
+
+    const deleteOneCard = (id) => {
+        deleteCard(id);
+    }
 
     return (
         <div>
@@ -29,7 +33,7 @@ export default function AllCard() {
                             <td>{card.identificationId}</td>
                             <td>{card.profession.name}</td>
                             <td>edit</td>
-                            <td>x</td>
+                            <td onClick={deleteOneCard(card.id)}>x</td>
                         </tr>
                     ))}
                 </tbody>
