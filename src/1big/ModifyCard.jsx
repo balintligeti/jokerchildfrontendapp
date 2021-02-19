@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
-import { getCardById } from '../context/ApiCalls';
+import { getCardById,getAllProfessions } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom'
 
 
 export default function ModifyCard(props) {
     const cardId=props.match.params.cardId
     const history=useHistory();
+    const [professions,setProfessions]=useState(null);
+
+    const [professionId,setProfessionId]=useState();
+    const [professionName,setProfessionName]=useState();
 
     const [identificationId,setIdentificationId]=useState();
 
@@ -52,23 +56,79 @@ export default function ModifyCard(props) {
                 setAssistance1(data.data.exercises[1].assistance);
                 setAssistance2(data.data.exercises[2].assistance);
 
+                setProfessionId(data.data.profession.id);
+                setProfessionName(data.data.profession.name);
+
+                getAllProfessions()
+                    .then((data1)=>{
+                        let list=data1.data;
+                        let newList = list.filter(element=>element.id!==data.data.profession.id);
+                        setProfessions(newList);
+                       // setProfessionId(data.data.profession.id) //need for avoinding the undifined value if we choose the default option
+            });
+
             })
     },[])
 
+
     const modifyCard = () =>{
-        
-        console.log(identificationId)
+
+        let answer0=rightAnswers0+";"+wrongAnswers0;
+        let answer1=rightAnswers1+";"+wrongAnswers1;
+        let answer2=rightAnswers2+";"+wrongAnswers2;
+
+        let card={
+            "id":cardId,
+            "exercises": [
+              {
+                "answer": answer0,
+                "assistance": assistance0,
+                "question": question0
+              },
+              {
+                "answer": answer1,
+                "assistance": assistance1,
+                "question": question1
+              },
+              {
+                "answer": answer2,
+                "assistance": assistance2,
+                "question": question2
+              }
+            ],
+            "identificationId": cardId,
+          }
+        //updateCardWithExistingProfession(card)
+
+        console.log(card)
+        console.log(professionId)
+
     }
 
     return(
         <div>
-             <div>
+            {professions==null ? (
+                <div></div>
+            ) 
+            : 
+            (
+            <div>
             <h1>Itt tudsz hozzáadni új kártyát a játékhoz!</h1>
             <div>
                 <div>
                     <p>Kártya azonosító megadása:</p>
                     <input onChange={event=>setIdentificationId(event.target.value)} defaultValue={identificationId} type="text" name="id" />
                 </div>
+                <Form.Group>
+                    <Form.Label>Szakma</Form.Label>
+                    <Form.Control as="select" onChange={event=>setProfessionId(event.target.value)}>
+                        <option value={professionId}>{professionName}</option>
+                        {professions.map((profession)=>
+                            <option value={profession.id}>{profession.name}</option>
+
+                        )}
+                    </Form.Control>
+                </Form.Group>
                 <Accordion>
                     <Card>
                         <Card.Header>
@@ -193,6 +253,8 @@ export default function ModifyCard(props) {
                 <PurpleButton onClick={modifyCard} text="Kártya módosítása"/>
             </div>
         </div>
+            )}
+             
 
         </div>)
 }

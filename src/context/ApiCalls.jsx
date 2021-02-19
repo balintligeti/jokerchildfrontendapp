@@ -76,6 +76,10 @@ const createCardWithExistingProfession = async (card,professionId) =>{
     return await axios.post(BASE_URL+"/card/withProfession?professionId="+professionId,card);
 }
 
+const updateCardWithExistingProfession = async (card,professionId) =>{
+    return await axios.put(BASE_URL+"/card/withProfession?professionId="+professionId,card);
+}
+
 
 const createProfession = async (profession) =>{
     return await axios.post(BASE_URL+"/profession/",profession);
@@ -113,7 +117,8 @@ export {
     createProfession,
     getAllProfessions,
     getAllCards,
-    allcard,
     deleteCard,
     getCardById,
+    updateCardWithExistingProfession
+    
 };

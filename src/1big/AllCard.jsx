@@ -18,6 +18,7 @@ export default function AllCard() {
 
     const deleteOneCard = (id) => {
         deleteCard(id);
+    }
     const modifyCard = (cardId) =>{
         history.push(`/modifycard/${cardId}`)
     }
@@ -41,7 +42,7 @@ export default function AllCard() {
 
                             <td>{card.profession.name}</td>                           
                             <td><PurpleButton id={card.id} onClick={event=>modifyCard(event.target.id)} text="Szerkesztés"/></td>
-                            <td onClick={deleteOneCard(card.id)}>x</td>
+                            <td onClick={event=>(deleteOneCard(card.id))}>x</td>
                         </tr>
                     ))}
                 </tbody>
@@ -51,4 +52,5 @@ export default function AllCard() {
             </div>
         </div>
     )
+    
 }
