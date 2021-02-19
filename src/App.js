@@ -10,6 +10,8 @@ import Answer from "./1big/Answer"
 import Statistics from "./1big/Statistics"
 import AddCard from "./1big/AddCard"
 import ProfilePage from "./1big/ProfilePage";
+import AllCard from "./1big/AllCard"
+import ModifyCard from "./1big/ModifyCard";
 
 
 const App = () => {
@@ -26,7 +28,8 @@ const App = () => {
                 <Route exact path='/statistics' component ={Statistics}></Route>
                 <Route exact path='/addcard' component={AddCard}></Route>
                 <Route exact path='/profil' component={ProfilePage}></Route>
-
+                <Route exact path='/allcard' component={AllCard}></Route>
+                <Route exact path='/modifycard/:cardId' component={ModifyCard}></Route>
             </div>
           </div>
         </Router>

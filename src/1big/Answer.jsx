@@ -165,7 +165,7 @@ export default function DndTest(props) {
     // But in this example everything is just done in one place for simplicity
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <PinkInfo text={question} ansOptions={state.goodWords.length}/>
+            <PinkInfo text={question} ansOptions={`${state.goodWords.length} választ kell megadnod.`}/>
             <div className="inline">
             
             <Droppable droppableId="droppable">
