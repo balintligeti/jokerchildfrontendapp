@@ -109,7 +109,8 @@ export default function ModifyCard(props) {
             "identificationId": identificationId,
           }
         updateCardWithExistingProfession(card,professionId)
-        .then(res=>console.log(res))
+        .then(history.push("/allcard"),
+                window.location.reload())
 
 
     }
