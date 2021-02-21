@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
 import { createProfession } from '../context/ApiCalls';
-//import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 
 
 export default function AddProfession() {
 
-   // const history=useHistory();
+    const history=useHistory();
 
     const [name,setName]=useState();
     const [description,setDescription]=useState("test");
@@ -24,7 +24,7 @@ export default function AddProfession() {
           }
 
         createProfession(profession)
-            .then((data)=>window.location.reload());     
+            .then(history.push("/allprofession"),window.location.reload());     
     }
 
 
