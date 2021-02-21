@@ -94,6 +94,11 @@ const getCardById = async (cardId) =>{
     return await axios.get(BASE_URL+"/card/?id="+cardId);
 }
 
+const deleteProfession = async (professionId) =>{
+    return await axios.delete(BASE_URL+"/profession/?id="+professionId);
+}
+
+
 
 
 
@@ -119,6 +124,7 @@ export {
     getAllCards,
     deleteCard,
     getCardById,
-    updateCardWithExistingProfession
+    updateCardWithExistingProfession,
+    deleteProfession
     
 };

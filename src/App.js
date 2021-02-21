@@ -13,6 +13,7 @@ import ProfilePage from "./1big/ProfilePage";
 import AddProfession from "./1big/AddProfession";
 import AllCard from "./1big/AllCard"
 import ModifyCard from "./1big/ModifyCard";
+import AllProfession from "./1big/AllProfession";
 
 
 
@@ -30,10 +31,10 @@ const App = () => {
                 <Route exact path='/statistics' component ={Statistics}></Route>
                 <Route exact path='/profil' component={ProfilePage}></Route>
                 <Route exact path='/addcard' component={AddCard}></Route>
-                <Route exact path='/addprofession' component={AddProfession}></Route>
                 <Route exact path='/allcard' component={AllCard}></Route>
                 <Route exact path='/modifycard/:cardId' component={ModifyCard}></Route>
-
+                <Route exact path='/allprofession' component={AllProfession}></Route>
+                <Route exact path='/addprofession' component={AddProfession}></Route>
             </div>
           </div>
         </Router>
