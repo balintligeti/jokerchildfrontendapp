@@ -18,7 +18,7 @@ export default function AllCard() {
 
     const deleteOneCard = (id) => {
         deleteCard(id);
-        window.location.reload();
+       // window.location.reload();
     }
     const modifyCard = (cardId) =>{
         history.push(`/modifycard/${cardId}`)

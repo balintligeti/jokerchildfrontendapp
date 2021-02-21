@@ -66,7 +66,7 @@ export default function AddCard() {
               }
 
             createCardWithExistingProfession(card,professionId)
-                .then(history.push("/allcard"));     
+                .then(history.push("/allcard"),window.location.reload());     
     }
 
     return (
