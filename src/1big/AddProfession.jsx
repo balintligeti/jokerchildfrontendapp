@@ -15,8 +15,6 @@ export default function AddProfession() {
 
 
     const createNewProfession= () =>{
-
-
         let profession={
             "name": name,
             "picture": "TODO",

@@ -22,7 +22,7 @@ export default function AllProfession() {
     }
 
     const modifyProfession = (professionId) =>{
-        history.push(`/modifyprofession/${professionId}`)
+        history.push(`/modifyprofession/${professionId}`);
     }
 
     return (

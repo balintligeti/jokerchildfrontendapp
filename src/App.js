@@ -14,7 +14,7 @@ import AddProfession from "./1big/AddProfession";
 import AllCard from "./1big/AllCard"
 import ModifyCard from "./1big/ModifyCard";
 import AllProfession from "./1big/AllProfession";
-
+import UpdateProfession from "./1big/UpdateProfession";
 
 
 const App = () => {
@@ -35,6 +35,7 @@ const App = () => {
                 <Route exact path='/modifycard/:cardId' component={ModifyCard}></Route>
                 <Route exact path='/allprofession' component={AllProfession}></Route>
                 <Route exact path='/addprofession' component={AddProfession}></Route>
+                <Route exact path='/modifyprofession/:professionId' component={UpdateProfession}></Route>
             </div>
           </div>
         </Router>
