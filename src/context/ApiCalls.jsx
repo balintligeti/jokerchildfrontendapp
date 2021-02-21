@@ -1,14 +1,20 @@
 import axios from "axios";
 
-
 //const BASE_URL="https://joker-child-spring.herokuapp.com";
-const BASE_URL="https://joker-child-spring.herokuapp.com";
+const BASE_URL="http://localhost:8080";
 
 const POST_CONFIG={"Content-Type": "application/json"}
 
+const deleteCard = async (id) => {
+    return await axios.delete(BASE_URL+"/card/?id="+id);
+}
+
+const getAllCards = async () => {
+    return await axios.get(BASE_URL + '/card/all');
+}
+
 const getCardByIdentificationId = async (identificationId) =>{
-    return await axios.get(BASE_URL+"/card/byIdentificationId?identificationId="+identificationId)
-    ;
+    return await axios.get(BASE_URL+"/card/byIdentificationId?identificationId="+identificationId);
 }
 
 const getSessionByUserId = async (userId) =>{
@@ -66,8 +72,26 @@ const deleteAllGameHistoryByUserId = async (userId) =>{
 }
 
 
-const createCard = async (card) =>{
-    return await axios.post(BASE_URL+"/card/",card);
+const createCardWithExistingProfession = async (card,professionId) =>{
+    return await axios.post(BASE_URL+"/card/withProfession?professionId="+professionId,card);
+}
+
+const updateCardWithExistingProfession = async (card,professionId) =>{
+    return await axios.put(BASE_URL+"/card/withProfession?professionId="+professionId,card);
+}
+
+
+const createProfession = async (profession) =>{
+    return await axios.post(BASE_URL+"/profession/",profession);
+}
+
+
+const getAllProfessions = async () =>{
+    return await axios.get(BASE_URL+"/profession/all");
+}
+
+const getCardById = async (cardId) =>{
+    return await axios.get(BASE_URL+"/card/?id="+cardId);
 }
 
 
@@ -89,6 +113,12 @@ export {
     getIsGameHistoryActiveByExerciseIdAndUserId,
     validateAnswer,
     deleteAllGameHistoryByUserId,
-    createCard
-
+    createCardWithExistingProfession,
+    createProfession,
+    getAllProfessions,
+    getAllCards,
+    deleteCard,
+    getCardById,
+    updateCardWithExistingProfession
+    
 };
