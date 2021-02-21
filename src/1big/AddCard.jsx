@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
 import { createCardWithExistingProfession,getAllProfessions } from '../context/ApiCalls';
+import { useHistory } from 'react-router-dom'
 
 
 
 export default function AddCard() {
+
+    const history=useHistory();
 
     const [professions,setProfessions]=useState(null);
 
@@ -63,7 +66,7 @@ export default function AddCard() {
               }
 
             createCardWithExistingProfession(card,professionId)
-                .then(window.location.reload());     
+                .then(history.push("/allcard"));     
     }
 
     return (
