@@ -75,7 +75,7 @@ export default function ModifyCard(props) {
             });
 
             })
-    },[])
+    })
 
 
     const modifyCard = () =>{
@@ -133,9 +133,8 @@ export default function ModifyCard(props) {
                     <Form.Label>Szakma</Form.Label>
                     <Form.Control as="select" onChange={event=>setProfessionId(event.target.value)}>
                         <option value={professionId}>{professionName}</option>
-                        {professions.map((profession)=>
-                            <option value={profession.id}>{profession.name}</option>
-
+                        {professions.map((profession,index)=>
+                            <option key={index} value={profession.id}>{profession.name}</option>
                         )}
                     </Form.Control>
                 </Form.Group>
@@ -149,26 +148,26 @@ export default function ModifyCard(props) {
                         <Accordion.Collapse eventKey="0">
                             <Card.Body>
                             <Form>
-                                    <Form.Group controlId="formBasicEmail">
+                                    <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
                                         <Form.Control onChange={event=>setQuestion0(event.target.value)} defaultValue={question0} type="question" placeholder="Írd ide a kérdést!"/>            
                                     </Form.Group>
 
-                                    <Form.Group controlId="formBasicPassword">
+                                    <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers0(event.target.value)} defaultValue={rightAnswers0} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                         <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers0(event.target.value)} defaultValue={wrongAnswers0} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                             <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Segítség:</Form.Label>
                                             <Form.Control onChange={event=>setAssistance0(event.target.value)} defaultValue={assistance0} type="assistance" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" />
                                             <Form.Text className="text-muted">
@@ -188,27 +187,27 @@ export default function ModifyCard(props) {
                         <Accordion.Collapse eventKey="1">
                             <Card.Body>
                             <Form>
-                                    <Form.Group controlId="formBasicEmail">
+                                    <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
                                         <Form.Control onChange={event=>setQuestion1(event.target.value)} defaultValue={question1} type="question" placeholder="Írd ide a kérdést!"/>
                                         
                                     </Form.Group>
 
-                                    <Form.Group controlId="formBasicPassword">
+                                    <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers1(event.target.value)} defaultValue={rightAnswers1} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                         <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers1(event.target.value)} defaultValue={wrongAnswers1} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                             <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Segítség:</Form.Label>
                                             <Form.Control onChange={event=>setAssistance1(event.target.value)} defaultValue={assistance1} type="assistance" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" />
                                             <Form.Text className="text-muted">
@@ -228,27 +227,27 @@ export default function ModifyCard(props) {
                         <Accordion.Collapse eventKey="2">
                             <Card.Body>
                             <Form>
-                                    <Form.Group controlId="formBasicEmail">
+                                    <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
                                         <Form.Control onChange={event=>setQuestion2(event.target.value)} defaultValue={question2} type="question" placeholder="Írd ide a kérdést!"/>
                                         
                                     </Form.Group>
 
-                                    <Form.Group controlId="formBasicPassword">
+                                    <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers2(event.target.value)} defaultValue={rightAnswers2} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                         <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers2(event.target.value)} defaultValue={wrongAnswers2} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                             <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Segítség:</Form.Label>
                                             <Form.Control onChange={event=>setAssistance2(event.target.value)} defaultValue={assistance2} type="assistance" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" />
                                             <Form.Text className="text-muted">

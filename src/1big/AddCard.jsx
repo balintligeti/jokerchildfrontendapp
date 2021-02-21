@@ -87,8 +87,8 @@ export default function AddCard() {
                 <Form.Group>
                     <Form.Label>Szakma</Form.Label>
                     <Form.Control as="select" onChange={event=>setProfessionId(event.target.value)} defaultValue="Szakma">
-                        {professions.map((profession)=>
-                            <option value={profession.id}>{profession.name}</option>
+                        {professions.map((profession,index)=>
+                            <option key={index} value={profession.id}>{profession.name}</option>
                         )}
 
                     </Form.Control>
@@ -106,25 +106,24 @@ export default function AddCard() {
                             <Form>
                                     <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
-                                        <Form.Control onChange={event=>setQuestion0(event.target.value)} type="question" placeholder="Írd ide a kérdést!"/>
-                                        
+                                        <Form.Control onChange={event=>setQuestion0(event.target.value)} type="question" placeholder="Írd ide a kérdést!"/>                                       
                                     </Form.Group>
 
-                                    <Form.Group controlId="formBasicPassword">
+                                    <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers0(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                         <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers0(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                             <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Segítség:</Form.Label>
                                             <Form.Control onChange={event=>setAssistance0(event.target.value)} type="assistance" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" />
                                             <Form.Text className="text-muted">
@@ -144,27 +143,27 @@ export default function AddCard() {
                         <Accordion.Collapse eventKey="1">
                             <Card.Body>
                             <Form>
-                                    <Form.Group controlId="formBasicEmail">
+                                    <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
                                         <Form.Control onChange={event=>setQuestion1(event.target.value)} type="question" placeholder="Írd ide a kérdést!"/>
                                         
                                     </Form.Group>
 
-                                    <Form.Group controlId="formBasicPassword">
+                                    <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers1(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                         <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers1(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                             <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Segítség:</Form.Label>
                                             <Form.Control onChange={event=>setAssistance1(event.target.value)} type="assistance" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" />
                                             <Form.Text className="text-muted">
@@ -184,27 +183,27 @@ export default function AddCard() {
                         <Accordion.Collapse eventKey="2">
                             <Card.Body>
                             <Form>
-                                    <Form.Group controlId="formBasicEmail">
+                                    <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
                                         <Form.Control onChange={event=>setQuestion2(event.target.value)} type="question" placeholder="Írd ide a kérdést!"/>
                                         
                                     </Form.Group>
 
-                                    <Form.Group controlId="formBasicPassword">
+                                    <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers2(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                         <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers2(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
                                             <Form.Text className="text-muted">
                                             A válasz kifejezéseket vesszővel kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Group>
                                         <Form.Label>Segítség:</Form.Label>
                                             <Form.Control onChange={event=>setAssistance2(event.target.value)} type="assistance" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" />
                                             <Form.Text className="text-muted">

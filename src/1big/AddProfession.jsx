@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { Accordion, Card, Button, Form } from 'react-bootstrap';
+import { Accordion, Card, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
 import { createProfession } from '../context/ApiCalls';
-import { useHistory } from 'react-router-dom'
+//import { useHistory } from 'react-router-dom'
 
 
 
 export default function AddProfession() {
 
-    const hisory=useHistory();
+   // const history=useHistory();
 
     const [name,setName]=useState();
-    const [picture,setPicture]=useState();
     const [description,setDescription]=useState("test");
 
 
