@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
 import { getCardById,getAllProfessions,updateCardWithExistingProfession } from '../context/ApiCalls';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 
 export default function ModifyCard(props) {
