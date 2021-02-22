@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
-import { createCardWithExistingProfession,getAllProfessions } from '../context/ApiCalls';
+import { createCard,getAllProfessions } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom'
 
 
@@ -65,7 +65,7 @@ export default function AddCard() {
                 "identificationId": cardId,
               }
 
-            createCardWithExistingProfession(card,professionId)
+            createCard(card,professionId)
                 .then(history.push("/allcard"),window.location.reload());     
     }
 

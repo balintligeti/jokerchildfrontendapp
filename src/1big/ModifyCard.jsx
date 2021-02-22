@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
-import { getCardById,getAllProfessions,updateCardWithExistingProfession } from '../context/ApiCalls';
+import { getCardById,getAllProfessions,updateCard } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom';
 
 
@@ -75,7 +75,7 @@ export default function ModifyCard(props) {
             });
 
             })
-    })
+    },[cardId])
 
 
     const modifyCard = () =>{
@@ -108,7 +108,7 @@ export default function ModifyCard(props) {
             ],
             "identificationId": identificationId,
           }
-        updateCardWithExistingProfession(card,professionId)
+        updateCard(card,professionId)
         .then(history.push("/allcard"),
                 window.location.reload())
 
