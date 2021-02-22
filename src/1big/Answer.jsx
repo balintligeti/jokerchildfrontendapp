@@ -24,12 +24,12 @@ export default function DndTest(props) {
                 setQuestion(data.data.exercises[questionId].question);
                 setExerciseId(data.data.exercises[questionId].id)
                 let allWords=data.data.exercises[questionId].answer.split(";");
-                let badWords=allWords[1].split(",");
-                const newW=(allWords[0].split(",").concat(badWords));
+                let badWords=allWords[1].split(".");
+                const newW=(allWords[0].split(".").concat(badWords));
                 setState( () => {
                     return {
                         words: newW,
-                        goodWords: allWords[0].split(","),
+                        goodWords: allWords[0].split("."),
                         items: getItems(newW.length, newW.sort().reverse()),
                         selected: getItems(0),
                     }
