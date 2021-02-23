@@ -45,7 +45,7 @@ export default function PopupButton(props) {
             //TODO: put history
 
             validateAnswer(0,props.exerciseId,true) //TODO 0 is only a hardcoded value need to swich if login is implemented
-            history.push("/Questions")
+            history.push("/succesful")
         }
         else{
             validateAnswer(0,props.exerciseId,false)//TODO 0 is only a hardcoded value need to swich if login is implemented
