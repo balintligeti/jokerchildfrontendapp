@@ -7,6 +7,8 @@ import "./questions.css"
 import {getSessionsCardByUserId,getExperienceByExerciseIdAndUserId,deleteSessionByUserId,
 createGameHistory,getIsGameHistoryActiveByExerciseIdAndUserId} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 
 export default function Questions() {
@@ -60,7 +62,6 @@ export default function Questions() {
         getSessionsCardByUserId(0) // fix value until login is not implemented
             .then((data)=>{
                 setCard(data.data);
-    
                 data.data.exercises.forEach((exercise)=>{
                     getExperienceByExerciseIdAndUserId(exercise.id,0) // 0 will be the userId
                     .then((data2)=>{                        
@@ -109,8 +110,9 @@ export default function Questions() {
                     </div>
                     <PurpleButton onClick={getNewCard} text="Új kártyát kérek!" />
                     <div>
-                        <MiniCard text="Leírás" align="left" className="oneline" />
+                        <MiniCard text="Leírás" align="left" className="oneline" isTrue={true} desc={card.profession.description}/>
                         <MiniCard text={currentPointsByCard+"/"+maximumPointsByCard+"XP-t gyűjtöttél"} align="right" className="oneline"/>
+                        
                     </div>
                 </div>
             ) 
