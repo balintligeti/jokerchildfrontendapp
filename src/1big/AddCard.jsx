@@ -70,7 +70,7 @@ export default function AddCard() {
     }
 
     return (
-        <div>
+        <div style={{padding: "4vw"}}>
             {
                 professions===null ? (
                     <h1>Oldal betöltése</h1>
@@ -96,8 +96,8 @@ export default function AddCard() {
                 <Accordion>
                     <Card>
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                               Kérdés megadásához kattints ide!
+                            <Accordion.Toggle as={Button} eventKey="0">
+                                1. kérdés megadásához kattints ide.
                             </Accordion.Toggle>
                         </Card.Header>
                         
@@ -136,8 +136,8 @@ export default function AddCard() {
                     </Card>
                     <Card>
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                            Kérdés megadásához kattints ide!
+                            <Accordion.Toggle as={Button} eventKey="1">
+                            2. kérdés megadásához kattints ide!
                     </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="1">
@@ -176,8 +176,8 @@ export default function AddCard() {
                     </Card>
                     <Card>
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                            Kérdés megadásához kattints ide!
+                            <Accordion.Toggle as={Button} eventKey="2">
+                            3. kérdés megadásához kattints ide!
                     </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="2">

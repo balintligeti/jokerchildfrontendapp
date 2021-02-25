@@ -44,7 +44,7 @@ export default function Navbar1() {
       <Navbar collapseOnSelect expand="lg"  style={{backgroundColor: "#7749f8", borderRadius: "20px", marginTop:"1vw", marginLeft:'1vw', marginRight: '1vw', fontFamily:"Courier New, courier, monospace", fontSize:'1vw'}} variant="dark">
       <Nav className="m-auto">
         <Nav.Link href="/profil">Profil</Nav.Link>
-        <Nav.Link href="/allcards">kártyák</Nav.Link>
+        <Nav.Link href="/allcard">kártyák</Nav.Link>
         <Nav.Link href="/allprofession">Szakmák</Nav.Link>
         <Nav.Link href="/exit">Kilépés</Nav.Link>
       </Nav>
