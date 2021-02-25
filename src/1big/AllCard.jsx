@@ -11,14 +11,19 @@ export default function AllCard() {
 
     const history=useHistory();
 
-    useEffect(() => {
+    const getCards = () => {
         getAllCards()
             .then(res => setCards(res.data));
+    }
+    useEffect(() => {
+        getCards()
     }, [])
+
+
 
     const deleteOneCard = (id) => {
         deleteCard(id);
-        window.location.reload();
+        getCards();
     }
     const modifyCard = (cardId) =>{
         history.push(`/modifycard/${cardId}`)
