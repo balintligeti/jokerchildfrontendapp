@@ -21,22 +21,22 @@ const App = () => {
 
     return (
         <Router>
-          <Navbar1/>
-          <div className='centralizeMainCard'>
-            <div className="mainDiv">
-                <Route exact path='/' component={WelcomePage}></Route>
+            <Navbar1 />
+            <div className='centralizeMainCard'>
+              <div className="mainDiv">
+                <Route exact path="/" component={WelcomePage}></Route>
                 <Route exact path='/getid' component ={GetId}></Route>
                 <Route exact path='/questions' component ={Questions}></Route>
                 <Route exact path='/answer/:questionId' component ={Answer}></Route>
                 <Route exact path='/statistics' component ={Statistics}></Route>
                 <Route exact path='/profil' component={ProfilePage}></Route>
+                <Route exact path='/succesful' component={Succesful}></Route>
+                <Route exact path='/addprofession' component={AddProfession}></Route>
+                <Route exact path='/modifyprofession/:professionId' component={UpdateProfession}></Route>
                 <Route exact path='/addcard' component={AddCard}></Route>
                 <Route exact path='/allcard' component={AllCard}></Route>
                 <Route exact path='/modifycard/:cardId' component={ModifyCard}></Route>
                 <Route exact path='/allprofession' component={AllProfession}></Route>
-                <Route exact path='/succesful' component={Succesful}></Route>
-                <Route exact path='/addprofession' component={AddProfession}></Route>
-                <Route exact path='/modifyprofession/:professionId' component={UpdateProfession}></Route>
             </div>
           </div>
         </Router>
