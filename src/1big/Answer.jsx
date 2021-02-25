@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import {getSessionsCardByUserId} from "../context/ApiCalls";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PopupButton from "../1small/PopupButton";
+import MiniCard from "../1small/MiniCard";
 
 
 export default function DndTest(props) {
@@ -16,13 +17,14 @@ export default function DndTest(props) {
 
     const [question,setQuestion]=useState(null);
     const [exerciseId,setExerciseId]=useState(null);
-
+    const [help, setHelp] = useState(null)
 
     useEffect(()=>{
         getSessionsCardByUserId(0) // fix value until login is not implemented
             .then((data)=>{
                 setQuestion(data.data.exercises[questionId].question);
                 setExerciseId(data.data.exercises[questionId].id)
+                setHelp(data.data.exercises[questionId].assistance)
                 let allWords=data.data.exercises[questionId].answer.split(";");
                 let badWords=allWords[1].split(",");
                 const newW=(allWords[0].split(",").concat(badWords));
@@ -157,7 +159,9 @@ export default function DndTest(props) {
         }
     };
 
-
+    const openHelpPage = () => {
+        window.location.href = help;
+    }
 
 
 
@@ -239,6 +243,7 @@ export default function DndTest(props) {
         <PopupButton text="Kész!" exerciseId={exerciseId} goodW={state.goodWords} selectedW={state.selected}/> 
         </div>
         <Link to='/questions'><PurpleButton text="Vissza a kérdésekhez!"/></Link>
+        <a target="_blank" href={help}>Policies</a>
         </DragDropContext>
     );
 }
