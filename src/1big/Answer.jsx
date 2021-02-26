@@ -25,13 +25,14 @@ export default function DndTest(props) {
                 setQuestion(data.data.exercises[questionId].question);
                 setExerciseId(data.data.exercises[questionId].id)
                 setHelp(data.data.exercises[questionId].assistance)
-                let allWords=data.data.exercises[questionId].answer.split(";");
-                let badWords=allWords[1].split(",");
-                const newW=(allWords[0].split(",").concat(badWords));
+                let allWords=data.data.exercises[questionId].answer.split("|");
+                console.log(data.data.exercises[questionId].answer)
+                let badWords=allWords[1].split(";");
+                const newW=(allWords[0].split(";").concat(badWords));
                 setState( () => {
                     return {
                         words: newW,
-                        goodWords: allWords[0].split(","),
+                        goodWords: allWords[0].split(";"),
                         items: getItems(newW.length, newW.sort().reverse()),
                         selected: getItems(0),
                     }
@@ -243,7 +244,9 @@ export default function DndTest(props) {
         <PopupButton text="Kész!" exerciseId={exerciseId} goodW={state.goodWords} selectedW={state.selected}/> 
         </div>
         <Link to='/questions'><PurpleButton text="Vissza a kérdésekhez!"/></Link>
-        <a target="_blank" href={help}>Policies</a>
+        
+            { (help) ? <a target="_blank" href={help}><MiniCard text="segítség"/></a> : <p></p>}
+        
         </DragDropContext>
     );
 }

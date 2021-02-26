@@ -10,6 +10,8 @@
     display: inline-block;
    }
 .grid-container {
-    display: grid;
-    grid-template-columns: 60% 20% 20%
-    }
+  display: grid;
+  grid-template-columns: repeat(Auto-fit, minmax(20vw, 3fr));
+  grid-gap: 1em;
+  }
+
