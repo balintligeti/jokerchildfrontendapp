@@ -160,11 +160,6 @@ export default function DndTest(props) {
         }
     };
 
-    const openHelpPage = () => {
-        window.location.href = help;
-    }
-
-
 
     // Normally you would want to split things out into separate components.
     // But in this example everything is just done in one place for simplicity
@@ -245,7 +240,7 @@ export default function DndTest(props) {
         </div>
         <Link to='/questions'><PurpleButton text="Vissza a kérdésekhez!"/></Link>
         
-            { (help) ? <a target="_blank" href={help}><MiniCard text="segítség"/></a> : <p></p>}
+            { (help) ? <a target="_blank" rel="noopener noreferrer" href={help}><MiniCard text="segítség"/></a> : <p></p>}
         
         </DragDropContext>
     );

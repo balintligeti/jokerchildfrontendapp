@@ -7,7 +7,6 @@ import "./questions.css"
 import {getSessionsCardByUserId,getExperienceByExerciseIdAndUserId,deleteSessionByUserId,
 createGameHistory,getIsGameHistoryActiveByExerciseIdAndUserId} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 
