@@ -110,7 +110,7 @@ export default function Questions() {
                     <PurpleButton onClick={getNewCard} text="Új kártyát kérek!" />
                     <div>
                         <MiniCard text="Leírás" align="left" className="oneline" isTrue={true} desc={card.profession.description}/>
-                        <MiniCard text={currentPointsByCard+"/"+maximumPointsByCard+"XP-t gyűjtöttél"} align="right" className="oneline"/>
+                        <MiniCard text={currentPointsByCard+"/"+maximumPointsByCard+"XP"}  align="right" className="oneline"/>
                         
                     </div>
                 </div>

@@ -4,6 +4,8 @@ import { Table } from 'react-bootstrap';
 import PurpleButton from '../1small/PurpleButton';
 import PinkInfo from '../1medium/PinkInfo';
 import { useHistory } from 'react-router-dom'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function AllCard() {
     
@@ -22,8 +24,24 @@ export default function AllCard() {
 
 
     const deleteOneCard = (id) => {
-        deleteCard(id);
-        getCards();
+        confirmAlert({
+            title: 'Megerősítés',
+            message: 'Biztos vagy benne, hogy törölni szeretnéd a kártyát?',
+            buttons: [
+              {
+                label: 'Igen',
+                onClick: () => {
+                    deleteCard(id);
+                    getCards();
+                }
+              },
+              {
+                label: 'nem',
+                
+              }
+            ]
+          });
+
     }
     const modifyCard = (cardId) =>{
         history.push(`/modifycard/${cardId}`)

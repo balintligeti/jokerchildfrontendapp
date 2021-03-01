@@ -45,7 +45,7 @@ export default function Navbar1() {
       <Nav className="m-auto">
         <Nav.Link href="/profil" style={{color: "white"}}
         >Profil</Nav.Link>
-        <Nav.Link href="/allcard" style={{color: "white"}}>kártyák</Nav.Link>
+        <Nav.Link href="/allcard" style={{color: "white"}}>Kártyák</Nav.Link>
         <Nav.Link href="/allprofession" style={{color: "white"}}>Szakmák</Nav.Link>
         <Nav.Link href="/exit" style={{color: "white"}}>Kilépés</Nav.Link>
       </Nav>
