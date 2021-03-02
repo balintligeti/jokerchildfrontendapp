@@ -13,7 +13,7 @@ export default function Navbar1() {
           })
   })
 
-  if (window.location.pathname === "/getid" || window.location.pathname === "/" || window.location.pathname === "/Questions" || window.location.pathname === "/answer/:questionId" || window.location.pathname === "/statistics" || window.location.pathname === "/profil" || window.location.pathname === "/succesful") {
+  if (window.location.pathname === "/getid" || window.location.pathname === "/loginreg" || window.location.pathname === "/" || window.location.pathname === "/Questions" || window.location.pathname === "/answer/:questionId" || window.location.pathname === "/statistics" || window.location.pathname === "/profil" || window.location.pathname === "/succesful") {
     return (
       <div >
         {isSessionActive == null ? (
