@@ -100,6 +100,9 @@ export default function UserReg() {
                     </Form.Group>
                     </div>
                 </Form>
+                <div>
+                    <p>A csillaggal jelölt mezők kitöltése kötelező.</p>
+                </div>
                 <div style={{marginBottom: "2vw"}}>
                     <PurpleButton text="Regisztrálok!" />
                 </div>

@@ -52,6 +52,9 @@ export default function TeacherReg() {
                         </Col>
                     </Form.Group>
                 </Form>
+                <div>
+                    <p>A csillaggal jelölt mezők kitöltése kötelező.</p>
+                </div>
                 <div style={{marginBottom: "2vw"}}>
                     <PurpleButton text="Regisztrálok!" />
                 </div>
