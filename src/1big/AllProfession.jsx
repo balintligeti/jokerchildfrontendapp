@@ -4,6 +4,8 @@ import { Table } from 'react-bootstrap';
 import PurpleButton from '../1small/PurpleButton';
 import PinkInfo from '../1medium/PinkInfo';
 import { useHistory } from 'react-router-dom'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function AllProfession() {
     
@@ -16,9 +18,25 @@ export default function AllProfession() {
             .then(res => setProfessions(res.data));
     }, [])
 
+
     const deleteOneProfession = (id) => {
-        deleteProfession(id);
-        window.location.reload();
+        confirmAlert({
+            title: 'Megerősítés',
+            message: 'Biztos vagy benne, hogy törölni szeretnéd a kártyát?',
+            buttons: [
+              {
+                label: 'Igen',
+                onClick: () => {
+                    deleteProfession(id);
+                    getAllProfessions();
+                }
+              },
+              {
+                label: 'nem',
+              }
+            ]
+          });
+
     }
 
     const modifyProfession = (professionId) =>{

@@ -43,8 +43,9 @@ export default function PopupButton(props) {
         })
         if(JSON.stringify(selectedItems.sort()) === JSON.stringify(props.goodW.sort())) {
 
-            validateAnswer(0,props.exerciseId,true) //0 is only a hardcoded value need to swich if login is implemented
-            history.push("/Questions")
+            validateAnswer(0,props.exerciseId,true) //TODO 0 is only a hardcoded value need to swich if login is implemented
+            history.push("/succesful")
+
         }
         else{
             validateAnswer(0,props.exerciseId,false)//0 is only a hardcoded value need to swich if login is implemented

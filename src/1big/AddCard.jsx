@@ -40,9 +40,9 @@ export default function AddCard() {
     },[])
 
     const createNewCard = () =>{
-        let answer0=rightAnswers0+";"+wrongAnswers0;
-        let answer1=rightAnswers1+";"+wrongAnswers1;
-        let answer2=rightAnswers2+";"+wrongAnswers2;
+        let answer0=rightAnswers0+"|"+wrongAnswers0;
+        let answer1=rightAnswers1+"|"+wrongAnswers1;
+        let answer2=rightAnswers2+"|"+wrongAnswers2;
 
         let card={
                 "exercises": [
@@ -70,7 +70,7 @@ export default function AddCard() {
     }
 
     return (
-        <div>
+        <div style={{padding: "4vw"}}>
             {
                 professions===null ? (
                     <h1>Oldal betöltése</h1>
@@ -84,9 +84,9 @@ export default function AddCard() {
                     <p>Kártya azonosító megadása:</p>
                     <input onChange={event=>setCardId(event.target.value)} type="text" name="id" />
                 </div>
-                <Form.Group>
+                <Form.Group hasValidation>
                     <Form.Label>Szakma</Form.Label>
-                    <Form.Control as="select" onChange={event=>setProfessionId(event.target.value)} defaultValue="Szakma">
+                    <Form.Control as="select" onChange={event=>setProfessionId(event.target.value)} defaultValue="Szakma" required>
                         {professions.map((profession,index)=>
                             <option key={index} value={profession.id}>{profession.name}</option>
                         )}
@@ -96,8 +96,8 @@ export default function AddCard() {
                 <Accordion>
                     <Card>
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                               Kérdés megadásához kattints ide!
+                            <Accordion.Toggle as={Button} eventKey="0">
+                                1. kérdés megadásához kattints ide.
                             </Accordion.Toggle>
                         </Card.Header>
                         
@@ -106,21 +106,25 @@ export default function AddCard() {
                             <Form>
                                     <Form.Group>
                                         <Form.Label>Mi a kérdés?</Form.Label>
-                                        <Form.Control onChange={event=>setQuestion0(event.target.value)} type="question" placeholder="Írd ide a kérdést!"/>                                       
+                                        <Form.Control onChange={event=>setQuestion0(event.target.value)} type="question" placeholder="Írd ide a kérdést!" />      
                                     </Form.Group>
 
                                     <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers0(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket ponttal kell elválasztani.
+
+                                            A válasz kifejezéseket pontosvesszővel kell elválasztani.
+
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers0(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket ponttal kell elválasztani.
+
+                                            A válasz kifejezéseket pontosvesszővel kell elválasztani.
+
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
@@ -136,8 +140,8 @@ export default function AddCard() {
                     </Card>
                     <Card>
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                            Kérdés megadásához kattints ide!
+                            <Accordion.Toggle as={Button} eventKey="1">
+                            2. kérdés megadásához kattints ide!
                     </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="1">
@@ -153,15 +157,18 @@ export default function AddCard() {
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers1(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket ponttal kell elválasztani.
+
+                                            A válasz kifejezéseket pontosvesszővel kell elválasztani.
+
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers1(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket ponttal kell elválasztani.
-                                            </Form.Text>
+
+                                            A válasz kifejezéseket pontosvesszővel kell elválasztani.
+                        </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Segítség:</Form.Label>
@@ -176,8 +183,8 @@ export default function AddCard() {
                     </Card>
                     <Card>
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                            Kérdés megadásához kattints ide!
+                            <Accordion.Toggle as={Button} eventKey="2">
+                            3. kérdés megadásához kattints ide!
                     </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="2">
@@ -193,14 +200,18 @@ export default function AddCard() {
                                         <Form.Label>Helyes válaszok:</Form.Label>
                                         <Form.Control onChange={event=>setRightAnswers2(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket ponttal kell elválasztani.
+
+                                            A válasz kifejezéseket pontosvesszővel kell elválasztani.
+
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
                                             <Form.Control onChange={event=>setWrongAnswers2(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket ponttal kell elválasztani.
+
+                                            A válasz kifejezéseket pontosvesszővel kell elválasztani.
+
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
