@@ -106,6 +106,11 @@ const updateProfession = async (profession) =>{
     return await axios.put(BASE_URL+"/profession/",profession);
 }
 
+const register = async (user) =>{
+    return await axios.put(BASE_URL+"/auth/register",user);
+}
+
+
 
 export {
     getCardByIdentificationId,
@@ -131,6 +136,7 @@ export {
     updateCard,
     deleteProfession,
     getProfessionById,
-    updateProfession
+    updateProfession,
+    register
     
 };

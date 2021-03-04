@@ -20,6 +20,20 @@ export default function UserReg() {
             
     }
 
+    const [name,setName]=useState();
+    const [username,setUsername]=useState();
+    const [password,setPassword]=useState();
+    const [passwordAgain,setPasswordAgain]=useState();
+    const [email,setEmail]=useState();
+    const [birthDate,setBirthDate]=useState();
+    const [school,setSchool]=useState();
+    const [group,setGroup]=useState();
+
+    const submitForm = () => {
+        console.log(name);    
+    }
+
+
     return (
         <div>
             <PinkInfo title="Diák regisztráció" text="Ha diák vagy, itt tudsz regisztrálni." />
@@ -30,7 +44,7 @@ export default function UserReg() {
                             Teljes név*:
                         </Form.Label>
                         <Col sm="5">
-                           <Form.Control type="fullname" placeholder="Ide írd a neved" />
+                           <Form.Control onChange={event=>setName(event.target.value)} type="fullname" placeholder="Ide írd a neved" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -46,7 +60,7 @@ export default function UserReg() {
                             Becenév*:
                         </Form.Label>
                         <Col sm="5">
-                           <Form.Control  placeholder="Írd be a beceneved" />
+                           <Form.Control onChange={event=>setUsername(event.target.value)} placeholder="Írd be a beceneved" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -54,7 +68,7 @@ export default function UserReg() {
                             Jelszó*:
                         </Form.Label>
                         <Col sm="5">
-                           <Form.Control  placeholder="Találj ki egy jelszót" />
+                           <Form.Control onChange={event=>setPassword(event.target.value)}  placeholder="Találj ki egy jelszót" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -62,7 +76,7 @@ export default function UserReg() {
                             Jelszó újra*:
                         </Form.Label>
                         <Col sm="5">
-                           <Form.Control placeholder="Jelszó újra" />
+                           <Form.Control onChange={event=>setPasswordAgain(event.target.value)} placeholder="Jelszó újra" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -70,7 +84,7 @@ export default function UserReg() {
                             Email címed*:
                         </Form.Label>
                         <Col sm="5">
-                           <Form.Control  placeholder="Email cím" />
+                           <Form.Control onChange={event=>setEmail(event.target.value)}  placeholder="Email cím" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -78,7 +92,7 @@ export default function UserReg() {
                             Iskola*:
                         </Form.Label>
                         <Col sm="5">
-                    <Form.Control as="select" required onChange={event => setOpacity()}>
+                    <Form.Control as="select" onChange={event=>setSchool(event.target.value)} required onChange={event => setOpacity()}>
                         {[1,2,3].map((profession,index)=>
                             <option key={index} value={profession.id} >{profession}</option>
                         )}
@@ -91,7 +105,7 @@ export default function UserReg() {
                             Osztály*:
                         </Form.Label>
                         <Col sm="5">
-                    <Form.Control as="select" required>
+                    <Form.Control onChange={event=>setGroup(event.target.value)} as="select" required>
                         {[1,2,3].map((profession,index)=>
                             <option key={index} value={profession.id}>{profession}</option>
                         )}
@@ -104,7 +118,7 @@ export default function UserReg() {
                     <p>A csillaggal jelölt mezők kitöltése kötelező.</p>
                 </div>
                 <div style={{marginBottom: "2vw"}}>
-                    <PurpleButton text="Regisztrálok!" />
+                    <PurpleButton onClick={submitForm} text="Regisztrálok!" />
                 </div>
             </div>
         </div>
