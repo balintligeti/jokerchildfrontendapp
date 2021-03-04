@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
-import { getCardById,getAllProfessions,updateCardWithExistingProfession } from '../context/ApiCalls';
+import { getCardById,getAllProfessions,updateCard } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom';
 
 
@@ -49,16 +49,16 @@ export default function ModifyCard(props) {
                 setExerciseId2(data.data.exercises[2].id);
                 
                 let allWords=data.data.exercises[0].answer.split(";");
-                setRightAnswers0(allWords[0].split(","));
-                setWrongAnswers0(allWords[1].split(","));
+                setRightAnswers0(allWords[0].split("."));
+                setWrongAnswers0(allWords[1].split("."));
 
                 allWords=data.data.exercises[1].answer.split(";");
-                setRightAnswers1(allWords[0].split(","));
-                setWrongAnswers1(allWords[1].split(","));
+                setRightAnswers1(allWords[0].split("."));
+                setWrongAnswers1(allWords[1].split("."));
 
                 allWords=data.data.exercises[2].answer.split(";");
-                setRightAnswers2(allWords[0].split(","));
-                setWrongAnswers2(allWords[1].split(","));
+                setRightAnswers2(allWords[0].split("."));
+                setWrongAnswers2(allWords[1].split("."));
 
                 setAssistance0(data.data.exercises[0].assistance);
                 setAssistance1(data.data.exercises[1].assistance);
@@ -75,7 +75,7 @@ export default function ModifyCard(props) {
             });
 
             })
-    })
+    },[cardId])
 
 
     const modifyCard = () =>{
@@ -108,7 +108,7 @@ export default function ModifyCard(props) {
             ],
             "identificationId": identificationId,
           }
-        updateCardWithExistingProfession(card,professionId)
+        updateCard(card,professionId)
         .then(history.push("/allcard"),
                 window.location.reload())
 
@@ -155,16 +155,16 @@ export default function ModifyCard(props) {
 
                                     <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
-                                        <Form.Control onChange={event=>setRightAnswers0(event.target.value)} defaultValue={rightAnswers0} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                        <Form.Control onChange={event=>setRightAnswers0(event.target.value)} defaultValue={rightAnswers0} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
-                                            <Form.Control onChange={event=>setWrongAnswers0(event.target.value)} defaultValue={wrongAnswers0} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                            <Form.Control onChange={event=>setWrongAnswers0(event.target.value)} defaultValue={wrongAnswers0} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
@@ -195,16 +195,16 @@ export default function ModifyCard(props) {
 
                                     <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
-                                        <Form.Control onChange={event=>setRightAnswers1(event.target.value)} defaultValue={rightAnswers1} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                        <Form.Control onChange={event=>setRightAnswers1(event.target.value)} defaultValue={rightAnswers1} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
-                                            <Form.Control onChange={event=>setWrongAnswers1(event.target.value)} defaultValue={wrongAnswers1} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                            <Form.Control onChange={event=>setWrongAnswers1(event.target.value)} defaultValue={wrongAnswers1} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
@@ -235,16 +235,16 @@ export default function ModifyCard(props) {
 
                                     <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
-                                        <Form.Control onChange={event=>setRightAnswers2(event.target.value)} defaultValue={rightAnswers2} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                        <Form.Control onChange={event=>setRightAnswers2(event.target.value)} defaultValue={rightAnswers2} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
-                                            <Form.Control onChange={event=>setWrongAnswers2(event.target.value)} defaultValue={wrongAnswers2} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                            <Form.Control onChange={event=>setWrongAnswers2(event.target.value)} defaultValue={wrongAnswers2} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>

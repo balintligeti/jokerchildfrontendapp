@@ -25,10 +25,11 @@ export default function DndTest(props) {
                 setQuestion(data.data.exercises[questionId].question);
                 setExerciseId(data.data.exercises[questionId].id)
                 setHelp(data.data.exercises[questionId].assistance)
+          
                 let allWords=data.data.exercises[questionId].answer.split("|");
-                console.log(data.data.exercises[questionId].answer)
                 let badWords=allWords[1].split(";");
                 const newW=(allWords[0].split(";").concat(badWords));
+          
                 setState( () => {
                     return {
                         words: newW,
