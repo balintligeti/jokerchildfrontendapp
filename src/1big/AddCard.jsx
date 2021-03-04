@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
-import { createCardWithExistingProfession,getAllProfessions } from '../context/ApiCalls';
+import { createCard,getAllProfessions } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom'
 
 
@@ -65,7 +65,7 @@ export default function AddCard() {
                 "identificationId": cardId,
               }
 
-            createCardWithExistingProfession(card,professionId)
+            createCard(card,professionId)
                 .then(history.push("/allcard"),window.location.reload());     
     }
 
@@ -111,16 +111,16 @@ export default function AddCard() {
 
                                     <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
-                                        <Form.Control onChange={event=>setRightAnswers0(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                        <Form.Control onChange={event=>setRightAnswers0(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
-                                            <Form.Control onChange={event=>setWrongAnswers0(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                            <Form.Control onChange={event=>setWrongAnswers0(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
@@ -151,16 +151,16 @@ export default function AddCard() {
 
                                     <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
-                                        <Form.Control onChange={event=>setRightAnswers1(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                        <Form.Control onChange={event=>setRightAnswers1(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
-                                            <Form.Control onChange={event=>setWrongAnswers1(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                            <Form.Control onChange={event=>setWrongAnswers1(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
@@ -191,16 +191,16 @@ export default function AddCard() {
 
                                     <Form.Group>
                                         <Form.Label>Helyes válaszok:</Form.Label>
-                                        <Form.Control onChange={event=>setRightAnswers2(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                        <Form.Control onChange={event=>setRightAnswers2(event.target.value)} type="goodAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                         <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                         </Form.Text>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Helytelen válaszok:</Form.Label>
-                                            <Form.Control onChange={event=>setWrongAnswers2(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt, Meleg van, Nem esik a hó" />
+                                            <Form.Control onChange={event=>setWrongAnswers2(event.target.value)} type="badAnswers" placeholder="pl.: A nap süt. Meleg van. Nem esik a hó" />
                                             <Form.Text className="text-muted">
-                                            A válasz kifejezéseket vesszővel kell elválasztani.
+                                            A válasz kifejezéseket ponttal kell elválasztani.
                                             </Form.Text>
                                     </Form.Group>
                                     <Form.Group>

@@ -72,12 +72,12 @@ const deleteAllGameHistoryByUserId = async (userId) =>{
 }
 
 
-const createCardWithExistingProfession = async (card,professionId) =>{
-    return await axios.post(BASE_URL+"/card/withProfession?professionId="+professionId,card);
+const createCard = async (card,professionId) =>{
+    return await axios.post(BASE_URL+"/card/?professionId="+professionId,card);
 }
 
-const updateCardWithExistingProfession = async (card,professionId) =>{
-    return await axios.put(BASE_URL+"/card/withProfession?professionId="+professionId,card);
+const updateCard = async (card,professionId) =>{
+    return await axios.put(BASE_URL+"/card/?professionId="+professionId,card);
 }
 
 
@@ -122,13 +122,13 @@ export {
     getIsGameHistoryActiveByExerciseIdAndUserId,
     validateAnswer,
     deleteAllGameHistoryByUserId,
-    createCardWithExistingProfession,
+    createCard,
     createProfession,
     getAllProfessions,
     getAllCards,
     deleteCard,
     getCardById,
-    updateCardWithExistingProfession,
+    updateCard,
     deleteProfession,
     getProfessionById,
     updateProfession
