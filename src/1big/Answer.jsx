@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import {getSessionsCardByUserId} from "../context/ApiCalls";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PopupButton from "../1small/PopupButton";
+import MiniCard from "../1small/MiniCard";
 
 
 export default function DndTest(props) {
@@ -16,20 +17,23 @@ export default function DndTest(props) {
 
     const [question,setQuestion]=useState(null);
     const [exerciseId,setExerciseId]=useState(null);
-
+    const [help, setHelp] = useState(null)
 
     useEffect(()=>{
         getSessionsCardByUserId(0) // fix value until login is not implemented
             .then((data)=>{
                 setQuestion(data.data.exercises[questionId].question);
                 setExerciseId(data.data.exercises[questionId].id)
-                let allWords=data.data.exercises[questionId].answer.split(";");
-                let badWords=allWords[1].split(",");
-                const newW=(allWords[0].split(",").concat(badWords));
+                setHelp(data.data.exercises[questionId].assistance)
+          
+                let allWords=data.data.exercises[questionId].answer.split("|");
+                let badWords=allWords[1].split(";");
+                const newW=(allWords[0].split(";").concat(badWords));
+          
                 setState( () => {
                     return {
                         words: newW,
-                        goodWords: allWords[0].split(","),
+                        goodWords: allWords[0].split(";"),
                         items: getItems(newW.length, newW.sort().reverse()),
                         selected: getItems(0),
                     }
@@ -158,9 +162,6 @@ export default function DndTest(props) {
     };
 
 
-
-
-
     // Normally you would want to split things out into separate components.
     // But in this example everything is just done in one place for simplicity
     return (
@@ -239,6 +240,9 @@ export default function DndTest(props) {
         <PopupButton text="Kész!" exerciseId={exerciseId} goodW={state.goodWords} selectedW={state.selected}/> 
         </div>
         <Link to='/questions'><PurpleButton text="Vissza a kérdésekhez!"/></Link>
+        
+            { (help) ? <a target="_blank" rel="noopener noreferrer" href={help}><MiniCard text="segítség"/></a> : <p></p>}
+        
         </DragDropContext>
     );
 }

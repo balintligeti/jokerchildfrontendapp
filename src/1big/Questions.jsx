@@ -7,6 +7,7 @@ import "./questions.css"
 import {getSessionsCardByUserId,getExperienceByExerciseIdAndUserId,deleteSessionByUserId,
 createGameHistory,getIsGameHistoryActiveByExerciseIdAndUserId} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
+import 'reactjs-popup/dist/index.css';
 
 
 export default function Questions() {
@@ -60,7 +61,6 @@ export default function Questions() {
         getSessionsCardByUserId(0) // fix value until login is not implemented
             .then((data)=>{
                 setCard(data.data);
-    
                 data.data.exercises.forEach((exercise)=>{
                     getExperienceByExerciseIdAndUserId(exercise.id,0) // 0 will be the userId
                     .then((data2)=>{                        
@@ -95,9 +95,9 @@ export default function Questions() {
                             card.exercises.map((exercise,index)=>
                                 <li key={index}>
                                 <div className="grid-container">
-                                    <p>{exercise.question}</p>
-                                    <PurpleButton id={index} onClick={event=>answerQuestion(event.target.id)} text="Megválaszolom" />     
-                                    <p>{dict.get(exercise.id)}/3</p>
+                                    <p className="grid">{exercise.question}</p>
+                                    <PurpleButton id={index} className="grid" onClick={event=>answerQuestion(event.target.id)} text="Megválaszolom" style={{}} />     
+                                    <p className="grid">{dict.get(exercise.id)}/3</p>
                                 </div>
                                 </li>)
                             }
@@ -109,8 +109,9 @@ export default function Questions() {
                     </div>
                     <PurpleButton onClick={getNewCard} text="Új kártyát kérek!" />
                     <div>
-                        <MiniCard text="Leírás" align="left" className="oneline" />
-                        <MiniCard text={currentPointsByCard+"/"+maximumPointsByCard+"XP-t gyűjtöttél"} align="right" className="oneline"/>
+                        <MiniCard text="Leírás" align="left" className="oneline" isTrue={true} desc={card.profession.description}/>
+                        <MiniCard text={currentPointsByCard+"/"+maximumPointsByCard+"XP"}  align="right" className="oneline"/>
+                        
                     </div>
                 </div>
             ) 
