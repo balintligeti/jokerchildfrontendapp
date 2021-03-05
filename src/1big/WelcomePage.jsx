@@ -10,17 +10,14 @@ export default function WelcomePage() {
     const history=useHistory(); 
     const [opacity, setOpa] = useState(0)
 
-    const setOpacity = () => {
-            setInterval(() => {
-                if (opacity >= 100) return;
-                setOpa(opacity => opacity + 1);
-              }, 10);
-            
-    }
 
     useEffect(() => {
-        setOpacity();
-    }, [])
+        setInterval(() => {
+            if (opacity >= 100) return;
+            setOpa(opacity => opacity + 1);
+          }, 10);
+        
+    }, [opacity])
     return (
         <div style={{opacity: opacity + "%"}}>
             <PinkInfo title="Joker Child" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
