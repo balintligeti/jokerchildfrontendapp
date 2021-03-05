@@ -107,7 +107,9 @@ export default function Questions() {
                     <div>
                         <img src={urhajos} alt="alt" className="responsiveGetId" style={{width:'100%',maxWidth:'300px',height:"auto", paddingRight:"1%"}}/>
                     </div>
-                    <PurpleButton onClick={getNewCard} text="Új kártyát kérek!" />
+                    <div style={{margin: "2vw"}}>
+                        <PurpleButton onClick={getNewCard} text="Új kártyát kérek!" />
+                    </div>
                     <div>
                         <MiniCard text="Leírás" align="left" className="oneline" isTrue={true} desc={card.profession.description}/>
                         <MiniCard text={currentPointsByCard+"/"+maximumPointsByCard+"XP"}  align="right" className="oneline"/>
