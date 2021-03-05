@@ -35,7 +35,9 @@ export default function GetId() {
                 <div className="input1">
                     <input type="text" name="name"  className="input1" onChange={event=>setIdentificationId(event.target.value)}/>
                 </div>
-                <PurpleButton text="Mutasd a kártyát!" onClick={submitCode}/>
+                <div style={{marginBottom: "3vw"}}>
+                <PurpleButton text="Mutasd a kártyát!"  onClick={submitCode}/>
+                </div>
                       
             </div>      
     )

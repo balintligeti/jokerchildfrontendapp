@@ -17,6 +17,7 @@ import UpdateProfession from "./1big/UpdateProfession";
 import Succesful from "./1big/Succesful";
 import UserReg from "./1big/UserReg";
 import TeacherReg from "./1big/TeacherReg";
+import Login from "./1big/Login";
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
                 <Route exact path='/allprofession' component={AllProfession}></Route>
                 <Route exact path='/userreg' component={UserReg}></Route>
                 <Route exact path='/teacherreg' component={TeacherReg}></Route>
+                <Route exact path='/login' component={Login}></Route>                
             </div>
           </div>
         </Router>

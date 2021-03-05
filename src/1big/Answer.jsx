@@ -87,7 +87,7 @@ export default function DndTest(props) {
         borderRadius: '20px',
         // change background colour if dragging
         background: isDragging ? 'lightgreen' : 'grey',
-        height: '35px',
+        minHeight: '35px',
         color: isDragging ? 'black' : 'white',
         // styles we need to apply on draggables
         ...draggableStyle
@@ -238,9 +238,9 @@ export default function DndTest(props) {
         <div style={{marginTop: "1vw", marginBottom: '1vw'}}>
         <PopupButton text="Kész!" exerciseId={exerciseId} goodW={state.goodWords} selectedW={state.selected}/> 
         </div>
-        <Link to='/questions'><PurpleButton text="Vissza a kérdésekhez!"/></Link>
+        <div style={{marginBottom: '3vw'}}><Link to='/questions' ><PurpleButton text="Vissza a kérdésekhez!"/></Link></div>
         
-            { (help) ? <a target="_blank" rel="noopener noreferrer" href={help}><MiniCard text="segítség"/></a> : <p></p>}
+            { (help) ? <a target="_blank" rel="noopener noreferrer" style={{color: 'inherit'}}href={help}><MiniCard text="segítség"/></a> : <p></p>}
         
         </DragDropContext>
     );
