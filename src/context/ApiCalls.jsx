@@ -107,7 +107,11 @@ const updateProfession = async (profession) =>{
 }
 
 const register = async (user) =>{
-    return await axios.put(BASE_URL+"/auth/register",user);
+    return await axios.post(BASE_URL+"/auth/register",user);
+}
+
+const login = async (user) =>{
+    return await axios.post(BASE_URL+"/auth/login",user);
 }
 
 
@@ -137,6 +141,7 @@ export {
     deleteProfession,
     getProfessionById,
     updateProfession,
-    register
+    register,
+    login,
     
 };

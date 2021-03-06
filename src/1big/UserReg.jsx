@@ -4,6 +4,8 @@ import {  Form, Row, Col } from 'react-bootstrap';
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import PurpleButton from "../1small/PurpleButton";
+import { register } from '../context/ApiCalls';
+
 
 export default function UserReg() {
     let inputProps = {
@@ -30,7 +32,19 @@ export default function UserReg() {
     const [group,setGroup]=useState();
 
     const submitForm = () => {
-        console.log(name);    
+        let member={
+            //"birthDate": birthDate,
+            "email": email,
+            "experience": 0,
+            "id":7777777, //TODO need to remove
+            "name": name,
+            "password": password,
+            "role": "STUDENT",
+            "username": username
+          }
+
+        register(member).then((res)=>console.log(res.data));
+  
     }
 
 
