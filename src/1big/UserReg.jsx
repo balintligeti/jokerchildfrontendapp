@@ -1,23 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PinkInfo from '../1medium/PinkInfo'
 import {  Form, Row, Col } from 'react-bootstrap';
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import PurpleButton from "../1small/PurpleButton";
-
+import {getAllSchool, getClassesById} from "../context/ApiCalls"
 export default function UserReg() {
     let inputProps = {
         placeholder: 'Születési dátum'
     };
 
     const [opacity, setOpa] = useState(0)
-
+    const [schools, setSchools] = useState([])
+    const [classes, setClasses] = useState([])
+    
     const setOpacity = () => {
             setInterval(() => {
                 if (opacity >= 100) return;
                 setOpa(opacity => opacity + 1);
-              }, 10);
-            
+              }, 10);    
+    }
+
+
+    useEffect(() => {
+        getAllSchool()
+            .then((res) => {
+                setSchools(res.data)
+            })
+    }, [])
+
+    const selectClass = (schoolName) => {
+        setOpacity()
+            getClassesById(schoolName)
+                .then((res) => {
+                    setClasses(res.data)
+                    console.log(classes)
+                })
     }
 
     return (
@@ -78,9 +96,10 @@ export default function UserReg() {
                             Iskola*:
                         </Form.Label>
                         <Col sm="5">
-                    <Form.Control as="select" required onChange={event => setOpacity()}>
-                        {[1,2,3].map((profession,index)=>
-                            <option key={index} value={profession.id} >{profession}</option>
+                    <Form.Control as="select" required onChange={event => {selectClass(event.target.value)}}>
+                        <option selected="true" disabled="disabled">Válassz iskolát!</option>
+                        {schools.map((school,index)=>
+                            <option key={index} value={school.name}>{school.name}</option>
                         )}
                     </Form.Control>
                         </Col>
@@ -92,8 +111,8 @@ export default function UserReg() {
                         </Form.Label>
                         <Col sm="5">
                     <Form.Control as="select" required>
-                        {[1,2,3].map((profession,index)=>
-                            <option key={index} value={profession.id}>{profession}</option>
+                        {classes.map((team,index)=>
+                            <option key={index} value={team.team}>{team.team}</option>
                         )}
                     </Form.Control>
                         </Col>

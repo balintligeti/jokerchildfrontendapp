@@ -5,6 +5,12 @@ const BASE_URL="https://joker-child-spring.herokuapp.com";
 
 const POST_CONFIG={"Content-Type": "application/json"}
 
+const getClassesById = async (schoolName) => {
+    return await axios.get(BASE_URL + '/school/classesBySchoolName?name=' + schoolName);
+}
+const getAllSchool = async () => {
+    return await axios.get(BASE_URL + '/school/all');
+}
 const deleteCard = async (id) => {
     return await axios.delete(BASE_URL+"/card/?id="+id);
 }
@@ -131,6 +137,7 @@ export {
     updateCard,
     deleteProfession,
     getProfessionById,
-    updateProfession
-    
+    updateProfession,
+    getAllSchool,
+    getClassesById
 };
