@@ -34,7 +34,6 @@ export default function UserReg() {
             getClassesById(schoolName)
                 .then((res) => {
                     setClasses(res.data)
-                    console.log(classes)
                 })
     }
 
