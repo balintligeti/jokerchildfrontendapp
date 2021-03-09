@@ -18,7 +18,7 @@ export default function UserReg() {
             setInterval(() => {
                 if (opacity >= 100) return;
                 setOpa(opacity => opacity + 1);
-              }, 10);    
+              }, 6);    
     }
 
 
@@ -34,6 +34,7 @@ export default function UserReg() {
             getClassesById(schoolName)
                 .then((res) => {
                     setClasses(res.data)
+                    console.log(classes)
                 })
     }
 
