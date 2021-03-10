@@ -89,14 +89,14 @@ export default function Questions() {
             (
                 <div>
                     <div className='test'>
-                        <p className='h1' style={{marginBottom: "2vw"}}>{card.profession.name}</p>
+                        <p className='h1' style={{marginBottom: "2vw", fontSize: "7vw"}}>{card.profession.name}</p>
                         <ol>
                             {
                             card.exercises.map((exercise,index)=>
                                 <li key={index}>
                                 <div className="grid-container">
                                     <p className="grid">{exercise.question}</p>
-                                    <PurpleButton id={index} className="grid" onClick={event=>answerQuestion(event.target.id)} text="Megválaszolom" style={{}} />     
+                                    <PurpleButton id={index} className="grid" onClick={event=>answerQuestion(event.target.id)} text="Megválaszolom"/>   
                                     <p className="grid">{dict.get(exercise.id)}/3</p>
                                 </div>
                                 {(index < 2) ? <hr style={{borderWidth: "2px", opacity: "70%",borderColor: "purple"}}></hr> : <p></p>}
