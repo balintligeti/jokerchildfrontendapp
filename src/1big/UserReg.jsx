@@ -48,7 +48,7 @@ export default function UserReg() {
                             Teljes név*:
                         </Form.Label>
                         <Col sm="5">
-                           <Form.Control type="fullname" placeholder="Ide írd a neved" />
+                           <Form.Control type="fullname" placeholder="Ide írd a neved"/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextPassword">

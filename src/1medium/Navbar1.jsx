@@ -21,7 +21,7 @@ export default function Navbar1() {
         ) 
         : 
         (
-          <Navbar collapseOnSelect expand="sm"  style={{backgroundColor: "#7749f8", borderRadius: "20px", marginTop:"1vw", marginLeft:'10vw', marginRight: '10vw', fontFamily:"Courier New, courier, monospace", fontSize:'180%'}} variant="dark">
+          <Navbar collapseOnSelect expand="lg"  style={{backgroundColor: "#7749f8", borderRadius: "20px", marginTop:"1vw", marginLeft:'20vw', marginRight: '20vw', fontFamily:"Courier New, courier, monospace", fontSize:'180%'}} variant="dark">
           <Nav className="m-auto">
             <Nav.Link href="/" style={{color: "white"}}>Kezdőlap</Nav.Link>
             {isSessionActive===true ? (

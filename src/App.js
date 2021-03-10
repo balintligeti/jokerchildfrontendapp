@@ -42,7 +42,8 @@ const App = () => {
                 <Route exact path='/allprofession' component={AllProfession}></Route>
                 <Route exact path='/userreg' component={UserReg}></Route>
                 <Route exact path='/teacherreg' component={TeacherReg}></Route>
-                <Route exact path='/login' component={Login}></Route>                
+                <Route exact path='/login' component={Login}></Route>      
+          
             </div>
           </div>
         </Router>
