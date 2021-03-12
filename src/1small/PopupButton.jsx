@@ -3,7 +3,6 @@ import { Button, Popup } from 'semantic-ui-react'
 import './popup.css'
 import { useHistory } from 'react-router-dom';
 import {validateAnswer} from "../context/ApiCalls"
-import PurpleButton from './PurpleButton';
 import './purpleButton.css'
 
 

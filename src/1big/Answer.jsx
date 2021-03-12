@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PinkInfo from "../1medium/PinkInfo";
-import PurpleButton from "../1small/PurpleButton";
 import "./getId.css";
 import "./answer.css";
 import "./questions.css";
