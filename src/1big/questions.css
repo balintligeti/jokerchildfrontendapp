@@ -21,4 +21,9 @@
       }
   }
 
+  @media (max-width: 600px) {
+    .grid-container {
+      font-size: medium !important;
+    }
+  }
 

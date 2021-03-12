@@ -239,9 +239,9 @@ export default function DndTest(props) {
         <div style={{marginTop: "1vw", marginBottom: '1vw'}}>
         <PopupButton text="Kész!" exerciseId={exerciseId} goodW={state.goodWords} selectedW={state.selected}/> 
         </div>
-        <div style={{marginBottom: '3vw'}}><Link to='/questions' ><PurpleButton text="Vissza a kérdésekhez!"/></Link></div>
-        
-            { (help) ? <a target="_blank" rel="noopener noreferrer" style={{color: 'inherit'}}href={help}><MiniCard text="segítség"/></a> : <p></p>}
+        <Link style={{color: 'inherit'}} to="/questions"><MiniCard style={{ color:"black" }} text="Vissza a" text2="kérdésekhez!" align="left" className="oneline"/></Link>
+
+            { (help) ? <a target="_blank" rel="noopener noreferrer" style={{color: 'inherit'}} href={help}><MiniCard text="Segítséget" text2="kérek!"/></a> : <p></p>}
         
         </DragDropContext>
     );

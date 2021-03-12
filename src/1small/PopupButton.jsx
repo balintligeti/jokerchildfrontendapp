@@ -3,6 +3,8 @@ import { Button, Popup } from 'semantic-ui-react'
 import './popup.css'
 import { useHistory } from 'react-router-dom';
 import {validateAnswer} from "../context/ApiCalls"
+import PurpleButton from './PurpleButton';
+import './purpleButton.css'
 
 
 export default function PopupButton(props) {
@@ -58,7 +60,7 @@ export default function PopupButton(props) {
             on='click'
             positionFixed
             className='popup'
-            trigger={<Button  style={{ color: 'white', background: '#7749f8', fontFamily: 'sans-serif', fontWeight: "bolder", borderRadius: "10px" }} onClick={validate}>{props.text}</Button>}
+            trigger={<Button  className="custom-btn" style={{padding: "1%"}} onClick={validate}>{props.text}</Button>}
         />
 
     )

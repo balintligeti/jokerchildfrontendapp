@@ -64,7 +64,7 @@ export default function AllCard() {
                             <td>{card.identificationId}</td>
                             <td>{card.profession.name}</td>                           
                             <td><PurpleButton id={card.id} onClick={event=>modifyCard(event.target.id)} text="Szerkesztés"/></td>
-                            <td onClick={event=>(deleteOneCard(card.id))}>x</td>
+                            <td><PurpleButton id={card.id} onClick={event=>(deleteOneCard(card.id))} text="Törlés"/></td>
                         </tr>
                     ))}
                 </tbody>
