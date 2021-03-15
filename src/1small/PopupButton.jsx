@@ -4,6 +4,7 @@ import './popup.css'
 import { useHistory } from 'react-router-dom';
 import {validateAnswer} from "../context/ApiCalls"
 import './purpleButton.css'
+import BigButton from '../1small/BigButton'
 
 
 export default function PopupButton(props) {
@@ -59,7 +60,7 @@ export default function PopupButton(props) {
             on='click'
             positionFixed
             className='popup'
-            trigger={<Button  className="custom-btn" style={{padding: "1%"}} onClick={validate}>{props.text}</Button>}
+            trigger={<button style={{background: "white", color: "black", borderColor: "white", border: "0"}} onClick={validate}><BigButton press={event => validate} text="Kész!"/></button>}
         />
 
     )
