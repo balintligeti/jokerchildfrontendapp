@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Popup } from 'semantic-ui-react'
+import { Popup } from 'semantic-ui-react'
 import './popup.css'
 import { useHistory } from 'react-router-dom';
 import {validateAnswer} from "../context/ApiCalls"
