@@ -6,6 +6,7 @@ import PinkInfo from '../1medium/PinkInfo';
 import { useHistory } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import BigButton from '../1small/BigButton'
 
 export default function AllCard() {
     
@@ -69,8 +70,8 @@ export default function AllCard() {
                     ))}
                 </tbody>
             </Table>
-            <div style={{marginTop: "20px", alignContent:"left"}}>
-                <a href="/addcard"><PurpleButton text="Kártya hozzáadása" /></a>
+            <div style={{marginTop: "20px", marginBottom: "20px"}}>
+                <a href="/addcard"><BigButton  press={{}} text="Kártya hozzáadása" /></a>
             </div>
         </div>
     )

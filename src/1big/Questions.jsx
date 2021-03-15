@@ -8,6 +8,7 @@ import {getSessionsCardByUserId,getExperienceByExerciseIdAndUserId,deleteSession
 createGameHistory,getIsGameHistoryActiveByExerciseIdAndUserId} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
 import 'reactjs-popup/dist/index.css';
+import BigButton from '../1small/BigButton'
 
 
 export default function Questions() {
@@ -109,7 +110,7 @@ export default function Questions() {
                         <img src={urhajos} alt="alt" className="responsiveGetId" style={{width:'100%',maxWidth:'300px',height:"auto", paddingRight:"1%"}}/>
                     </div>
                     <div style={{margin: "2vw"}}>
-                        <PurpleButton onClick={getNewCard} text="Új kártyát kérek!" />
+                        <BigButton text="Másik kártya" press={getNewCard} />
                     </div>
                     <div>
                         <MiniCard text="Leírás" align="left" className="oneline" isTrue={true} desc={card.profession.description}/>

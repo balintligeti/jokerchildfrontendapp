@@ -1,9 +1,12 @@
 import React from "react";
 import PinkInfo from '../1medium/PinkInfo'
 import {  Form, Row, Col } from 'react-bootstrap';
-import PurpleButton from "../1small/PurpleButton";
+import BigButton from '../1small/BigButton'
+import { useHistory } from 'react-router-dom'
+import "../game.css"
 
 export default function Login() {
+    const history=useHistory(); 
 
 
     return (
@@ -29,8 +32,8 @@ export default function Login() {
                     </Form.Group>
                 </Form>
 
-                <div style={{marginBottom: "2vw"}}>
-                    <PurpleButton text="Belépek!" />
+                <div style={{marginBottom: "2vw"}} className="purplButt">
+                <BigButton text="Belépés" press={event => history.push("/login")} />
                 </div>
             </div>
         </div>

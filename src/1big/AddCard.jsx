@@ -3,6 +3,7 @@ import { Accordion, Card, Button, Form } from 'react-bootstrap';
 import PurpleButton from "../1small/PurpleButton";
 import { createCard,getAllProfessions } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom'
+import BigButton from '../1small/BigButton'
 
 
 
@@ -226,7 +227,9 @@ export default function AddCard() {
                         </Accordion.Collapse>
                     </Card>
                 </Accordion>
-                <PurpleButton onClick={createNewCard} text="Kártya hozzáadása" />
+                <div style={{marginTop: "20px"}}>
+                    <BigButton press={createNewCard} text="Kártya hozzáadása" />
+                </div>
             </div>
                     </div>
                 )
