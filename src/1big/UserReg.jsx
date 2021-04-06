@@ -4,7 +4,7 @@ import {  Form, Row, Col } from 'react-bootstrap';
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import PurpleButton from "../1small/PurpleButton";
-import { register } from '../context/ApiCalls';
+import { getUsernameFromToken, register } from '../context/ApiCalls';
 
 
 export default function UserReg() {
@@ -36,15 +36,22 @@ export default function UserReg() {
             //"birthDate": birthDate,
             "email": email,
             "experience": 0,
-            "id":7777777, //TODO need to remove
+            "id":9999, //TODO need to remove
             "name": name,
             "password": password,
             "role": "STUDENT",
             "username": username
           }
 
-        register(member).then((res)=>console.log(res.data));
-  
+        register(member).then((res)=>{
+            localStorage.setItem("token",res.data.token);
+            localStorage.setItem("username",res.data.username);
+            let token=localStorage.getItem("token");
+            let name=localStorage.getItem("username");
+            console.log("token: "+token);
+            console.log("name: "+name);
+
+        });  
     }
 
 

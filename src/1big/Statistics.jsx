@@ -5,7 +5,7 @@ import {getXpByMemberId,getPlayedExercisesCountByMemberId} from "../context/ApiC
 export default function Statistics() {
 
     const [playerXp,setPlayerXp]=useState(null);
-    const [answeredQuestions,setAnsweredQuestions]=useState(null)
+    const [answeredQuestions,setAnsweredQuestions]=useState(null);
     const [isRenderable]=useState(true);
 
     useEffect(()=>{

@@ -30,7 +30,11 @@ export default function TeacherReg() {
             "username": username
           }
 
-        register(member).then((res)=>console.log(res.data));  
+          register(member).then((res)=>{
+            localStorage.setItem("token",res.data.token);
+            localStorage.setItem("username",res.data.username);
+        });  
+
     }
 
 

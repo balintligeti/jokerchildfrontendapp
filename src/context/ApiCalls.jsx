@@ -114,6 +114,14 @@ const login = async (user) =>{
     return await axios.post(BASE_URL+"/auth/login",user);
 }
 
+const getUsernameFromToken = async () =>{
+    let token=localStorage.getItem("token");
+    console.log("token: "+token);
+    return await axios.get(BASE_URL+"/auth/me");
+}
+
+
+
 
 
 export {
@@ -143,5 +151,6 @@ export {
     updateProfession,
     register,
     login,
+    getUsernameFromToken
     
 };
