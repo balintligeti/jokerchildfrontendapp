@@ -21,7 +21,7 @@ export default function DndTest(props) {
 
     useEffect(()=>{
         getUsernameFromToken(localStorage.getItem("token")).then((response)=>
-            getSessionsCardByUserId(response.data))
+            getSessionsCardByUserId(response.data)
             .then((data)=>{
                 setQuestion(data.data.exercises[questionId].question);
                 setExerciseId(data.data.exercises[questionId].id)
@@ -39,7 +39,7 @@ export default function DndTest(props) {
                         selected: getItems(0),
                     }
                 })
-            })           
+            }))           
     },[questionId])
     
     const [state,setState] = useState({

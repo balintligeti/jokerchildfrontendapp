@@ -42,21 +42,22 @@ export default function PopupButton(props) {
     const validate = () => {
 
         getUsernameFromToken(localStorage.getItem("token"))
-        .then((response)=>setMemberId(response.data))
-        
-        const selectedItems = [];
-        props.selectedW.forEach(item => {
-            selectedItems.push(item.content)
-        })
-        if(JSON.stringify(selectedItems.sort()) === JSON.stringify(props.goodW.sort())) {
+        .then((response)=>{
+            const selectedItems = [];
+            props.selectedW.forEach(item => {
+                selectedItems.push(item.content)
+            })
+            if(JSON.stringify(selectedItems.sort()) === JSON.stringify(props.goodW.sort())) {
 
-            validateAnswer(memberId,props.exerciseId,true); 
-            history.push("/succesful");
+                validateAnswer(response.data,props.exerciseId,true); 
+                history.push("/succesful");
 
-        }
-        else{
-            validateAnswer(memberId,props.exerciseId,false);
-        }
+            }
+            else{
+                validateAnswer(response.data,props.exerciseId,false);
+            }
+
+        })        
     }
 
     return (

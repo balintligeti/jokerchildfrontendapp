@@ -24,7 +24,6 @@ export default function Questions() {
 
     const [isRenderable,setIsRenderable]=useState(false);
 
-    const [memberId,setMemberId]=useState(null);
     
     const answerQuestion = (questionId) =>{
 
@@ -35,7 +34,7 @@ export default function Questions() {
                 "exerciseId": card.exercises[questionId].id,
                 "memberId": response.data
             };
-            getIsGameHistoryActiveByExerciseIdAndUserId(card.exercises[questionId].id,memberId)
+            getIsGameHistoryActiveByExerciseIdAndUserId(card.exercises[questionId].id,response.data)
                 .then((data)=> data.data ?
                     (
                         history.push(`/Answer/${questionId}`) 
