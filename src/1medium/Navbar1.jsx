@@ -1,13 +1,17 @@
 import React, { useState,useEffect } from "react";
-import {getIsSessionActiveByUserId} from "../context/ApiCalls"
+import {getIsSessionActiveByUserId,getUsernameFromToken} from "../context/ApiCalls"
 import { Navbar, Nav } from 'react-bootstrap';
 import './pinkInfo.css'
 export default function Navbar1() {
 
   const [isSessionActive,setIsSessionActive]=useState(null);
+  const [memberId,setMemberId]=useState(null);
 
   useEffect(()=>{
-      getIsSessionActiveByUserId(0) // fix value until login is not implemented
+    getUsernameFromToken(localStorage.getItem("token"))
+    .then((response)=>setMemberId(response.data))
+
+      getIsSessionActiveByUserId(memberId)
           .then((data)=>{
               setIsSessionActive(data.data);
           })

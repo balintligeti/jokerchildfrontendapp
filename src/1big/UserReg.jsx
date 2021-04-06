@@ -36,7 +36,6 @@ export default function UserReg() {
             //"birthDate": birthDate,
             "email": email,
             "experience": 0,
-            "id":9999, //TODO need to remove
             "name": name,
             "password": password,
             "role": "STUDENT",
@@ -47,9 +46,6 @@ export default function UserReg() {
             localStorage.setItem("token",res.data.token);
             localStorage.setItem("username",res.data.username);
             let token=localStorage.getItem("token");
-            let name=localStorage.getItem("username");
-            console.log("token: "+token);
-            console.log("name: "+name);
 
         });  
     }

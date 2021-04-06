@@ -1,13 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Button, Popup } from 'semantic-ui-react'
 import './popup.css'
 import { useHistory } from 'react-router-dom';
-import {validateAnswer} from "../context/ApiCalls"
+import {validateAnswer,getUsernameFromToken} from "../context/ApiCalls"
 
 
 export default function PopupButton(props) {
     let counter = 0;
     const history=useHistory();
+
+    const [memberId,setMemberId]=useState(null);
+
 
     const goodAnswers = () => {
         props.selectedW.map(item => {
@@ -37,18 +40,22 @@ export default function PopupButton(props) {
     }
 
     const validate = () => {
+
+        getUsernameFromToken(localStorage.getItem("token"))
+        .then((response)=>setMemberId(response.data))
+        
         const selectedItems = [];
         props.selectedW.forEach(item => {
             selectedItems.push(item.content)
         })
         if(JSON.stringify(selectedItems.sort()) === JSON.stringify(props.goodW.sort())) {
 
-            validateAnswer(0,props.exerciseId,true) //TODO 0 is only a hardcoded value need to swich if login is implemented
-            history.push("/succesful")
+            validateAnswer(memberId,props.exerciseId,true); 
+            history.push("/succesful");
 
         }
         else{
-            validateAnswer(0,props.exerciseId,false)//0 is only a hardcoded value need to swich if login is implemented
+            validateAnswer(memberId,props.exerciseId,false);
         }
     }
 

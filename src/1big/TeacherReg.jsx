@@ -23,7 +23,6 @@ export default function TeacherReg() {
             //"birthDate": birthDate,
             "email": email,
             "experience": 0,
-            "id":7777777, //TODO need to remove
             "name": name,
             "password": password,
             "role": "TEACHER",
