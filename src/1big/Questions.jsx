@@ -44,9 +44,7 @@ export default function Questions() {
                         createGameHistory(gameHistory)
                             .then(history.push(`/Answer/${questionId}`))
                     ))
-        })
-        
-              
+        })          
     }
 
     const getNewCard=()=>{
@@ -54,7 +52,6 @@ export default function Questions() {
         .then((response)=>
             deleteSessionByUserId(response.data)
                 .then(history.push("/GetId")),
-                window.location.reload() 
                 ); 
     }
 
