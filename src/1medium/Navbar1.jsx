@@ -5,16 +5,16 @@ import './pinkInfo.css'
 export default function Navbar1() {
 
   const [isSessionActive,setIsSessionActive]=useState(null);
-  const [memberId,setMemberId]=useState(null);
 
   useEffect(()=>{
     getUsernameFromToken(localStorage.getItem("token"))
-    .then((response)=>setMemberId(response.data))
+    .then((response)=>{
+        getIsSessionActiveByUserId(response.data)
+        .then((data)=>{
+            setIsSessionActive(data.data);
+        })
+    })
 
-      getIsSessionActiveByUserId(memberId)
-          .then((data)=>{
-              setIsSessionActive(data.data);
-          })
   })
 
   if (window.location.pathname === "/getid" || window.location.pathname === "/userreg" || window.location.pathname === "/teacherreg" || window.location.pathname === "/" || window.location.pathname === "/Questions" || window.location.pathname === "/answer/:questionId" || window.location.pathname === "/statistics" || window.location.pathname === "/profil" || window.location.pathname === "/succesful") {

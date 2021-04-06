@@ -8,8 +8,6 @@ export default function Statistics() {
     const [answeredQuestions,setAnsweredQuestions]=useState(null);
     const [isRenderable]=useState(true);
 
-    const [memberId,setMemberId]=useState(null);
-
     useEffect(()=>{
         getUsernameFromToken(localStorage.getItem("token"))
             .then((response)=>{

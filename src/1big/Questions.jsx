@@ -25,34 +25,28 @@ export default function Questions() {
     const [isRenderable,setIsRenderable]=useState(false);
 
     const [memberId,setMemberId]=useState(null);
-
- 
-
-
     
     const answerQuestion = (questionId) =>{
 
         getUsernameFromToken(localStorage.getItem("token"))
-        .then((response)=>setMemberId(response.data))
+        .then((response)=>{
+            let gameHistory={
+                "cardId": card.id,
+                "exerciseId": card.exercises[questionId].id,
+                "memberId": response.data
+            };
+            getIsGameHistoryActiveByExerciseIdAndUserId(card.exercises[questionId].id,memberId)
+                .then((data)=> data.data ?
+                    (
+                        history.push(`/Answer/${questionId}`) 
+                    ) 
+                    : 
+                    (
+                        createGameHistory(gameHistory)
+                            .then(history.push(`/Answer/${questionId}`))
+                    ))
+        })
         
-        let gameHistory={
-            "cardId": card.id,
-            "exerciseId": card.exercises[questionId].id,
-            "memberId": memberId
-        }
-
-        getUsernameFromToken(localStorage.getItem("token")).then((response)=>gameHistory.memberId=response.data)
-
-        getIsGameHistoryActiveByExerciseIdAndUserId(card.exercises[questionId].id,memberId)
-            .then((data)=> data.data ?
-                (
-                    history.push(`/Answer/${questionId}`) 
-                ) 
-                : 
-                (
-                    createGameHistory(gameHistory)
-                        .then(history.push(`/Answer/${questionId}`))
-                ))
               
     }
 
