@@ -3,7 +3,8 @@ import { Button, Popup } from 'semantic-ui-react'
 import './popup.css'
 import { useHistory } from 'react-router-dom';
 import {validateAnswer,getUsernameFromToken} from "../context/ApiCalls"
-
+import './purpleButton.css'
+import BigButton from '../1small/BigButton'
 
 export default function PopupButton(props) {
     let counter = 0;
@@ -66,7 +67,7 @@ export default function PopupButton(props) {
             on='click'
             positionFixed
             className='popup'
-            trigger={<Button  style={{ color: 'white', background: '#7749f8', fontFamily: 'sans-serif', fontWeight: "bolder", borderRadius: "10px" }} onClick={validate}>{props.text}</Button>}
+            trigger={<button style={{background: "white", color: "black", borderColor: "white", border: "0"}} onClick={validate}><BigButton press={event => validate} text="Kész!"/></button>}
         />
 
     )

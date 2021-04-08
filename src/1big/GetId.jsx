@@ -1,9 +1,9 @@
 import React,{useState}from 'react'
 import PinkInfo from "../1medium/PinkInfo"
-import PurpleButton from "../1small/PurpleButton"
 import "./getId.css"
 import {getCardByIdentificationId,createSession,getUsernameFromToken} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
+import BigButton from '../1small/BigButton'
 
 
 export default function GetId() {
@@ -38,7 +38,9 @@ export default function GetId() {
                 <div className="input1">
                     <input type="text" name="name"  className="input1" onChange={event=>setIdentificationId(event.target.value)}/>
                 </div>
-                <PurpleButton text="Mutasd a kártyát!" onClick={submitCode}/>
+                <div style={{marginBottom: "3vw"}}>
+                <BigButton text="Kártya betöltése" press={submitCode} />
+                </div>
                       
             </div>      
     )

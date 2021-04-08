@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
-import PurpleButton from "../1small/PurpleButton";
 import { createProfession } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom'
+import BigButton from '../1small/BigButton'
 
 
 
@@ -47,7 +47,9 @@ export default function AddProfession() {
                         </Card.Body>
                     </Card> 
                 </Accordion>
-                <PurpleButton onClick={createNewProfession} text="Kártya hozzáadása" />
+                <div style={{marginTop: "20px", marginBottom: "20px"}}>
+                    <BigButton press={createNewProfession} text="Kártya hozzáadása" />
+                </div>
             </div>
         </div>
     )

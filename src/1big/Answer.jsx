@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PinkInfo from "../1medium/PinkInfo";
-import PurpleButton from "../1small/PurpleButton";
 import "./getId.css";
 import "./answer.css";
 import "./questions.css";
@@ -89,7 +88,7 @@ export default function DndTest(props) {
         borderRadius: '20px',
         // change background colour if dragging
         background: isDragging ? 'lightgreen' : 'grey',
-        height: '35px',
+        minHeight: '35px',
         color: isDragging ? 'black' : 'white',
         // styles we need to apply on draggables
         ...draggableStyle
@@ -239,10 +238,11 @@ export default function DndTest(props) {
         </div>
         <div style={{marginTop: "1vw", marginBottom: '1vw'}}>
         <PopupButton text="Kész!" exerciseId={exerciseId} goodW={state.goodWords} selectedW={state.selected}/> 
-        </div>
-        <Link to='/questions'><PurpleButton text="Vissza a kérdésekhez!"/></Link>
         
-            { (help) ? <a target="_blank" rel="noopener noreferrer" href={help}><MiniCard text="segítség"/></a> : <p></p>}
+        </div>
+        <Link style={{color: 'inherit'}} to="/questions"><MiniCard style={{ color:"black" }} text="Vissza a" text2="kérdésekhez!" align="left" className="oneline"/></Link>
+
+            { (help) ? <a target="_blank" rel="noopener noreferrer" style={{color: 'inherit'}} href={help}><MiniCard text="Segítséget" text2="kérek!"/></a> : <p></p>}
         
         </DragDropContext>
     );

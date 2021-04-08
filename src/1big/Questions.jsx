@@ -8,6 +8,7 @@ import {getSessionsCardByUserId,getExperienceByExerciseIdAndUserId,deleteSession
 createGameHistory,getIsGameHistoryActiveByExerciseIdAndUserId, getUsernameFromToken} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
 import 'reactjs-popup/dist/index.css';
+import BigButton from '../1small/BigButton'
 
 
 export default function Questions() {
@@ -90,16 +91,17 @@ export default function Questions() {
             (
                 <div>
                     <div className='test'>
-                        <p className='h1'>{card.profession.name}</p>
+                        <p className='h1' style={{marginBottom: "2vw", fontSize: "7vw"}}>{card.profession.name}</p>
                         <ol>
                             {
                             card.exercises.map((exercise,index)=>
                                 <li key={index}>
                                 <div className="grid-container">
                                     <p className="grid">{exercise.question}</p>
-                                    <PurpleButton id={index} className="grid" onClick={event=>answerQuestion(event.target.id)} text="Megválaszolom" style={{}} />     
+                                    <PurpleButton id={index} className="grid" onClick={event=>answerQuestion(event.target.id)} text="Megválaszolom"/>   
                                     <p className="grid">{dict.get(exercise.id)}/3</p>
                                 </div>
+                                {(index < 2) ? <hr style={{borderWidth: "2px", opacity: "70%",borderColor: "purple"}}></hr> : <p></p>}
                                 </li>)
                             }
                             
@@ -108,7 +110,9 @@ export default function Questions() {
                     <div>
                         <img src={urhajos} alt="alt" className="responsiveGetId" style={{width:'100%',maxWidth:'300px',height:"auto", paddingRight:"1%"}}/>
                     </div>
-                    <PurpleButton onClick={getNewCard} text="Új kártyát kérek!" />
+                    <div style={{margin: "2vw"}}>
+                        <BigButton text="Másik kártya" press={getNewCard} />
+                    </div>
                     <div>
                         <MiniCard text="Leírás" align="left" className="oneline" isTrue={true} desc={card.profession.description}/>
                         <MiniCard text={currentPointsByCard+"/"+maximumPointsByCard+"XP"}  align="right" className="oneline"/>

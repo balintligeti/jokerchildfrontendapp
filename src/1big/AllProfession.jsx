@@ -6,6 +6,7 @@ import PinkInfo from '../1medium/PinkInfo';
 import { useHistory } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import BigButton from '../1small/BigButton'
 
 export default function AllProfession() {
     
@@ -59,13 +60,13 @@ export default function AllProfession() {
                         <tr key={key}>
                             <td>{profession.name}</td>                           
                             <td><PurpleButton id={profession.id} onClick={event=>modifyProfession(event.target.id)} text="Szerkesztés"/></td>
-                            <td onClick={event=>(deleteOneProfession(profession.id))}>x</td>
+                            <td><PurpleButton id={profession.id} onClick={event=>(deleteOneProfession(profession.id))} text="Törlés"/></td>
                         </tr>
                     ))}
                 </tbody>
             </Table>
-            <div style={{marginTop: "20px", alignContent:"left"}}>
-                <a href="/addprofession"><PurpleButton text="Szakma hozzáadása" /></a>
+            <div style={{marginTop: "20px", marginBottom: "20px"}}>
+                <a href="/addprofession"><BigButton text="Szakma hozzáadása" /></a>
             </div>
         </div>
     )
