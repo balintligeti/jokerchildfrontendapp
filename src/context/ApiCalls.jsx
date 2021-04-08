@@ -155,7 +155,6 @@ export {
     deleteProfession,
     getProfessionById,
     updateProfession,
-    registrationPage,
     register,
     login,
     getUsernameFromToken,

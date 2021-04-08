@@ -127,13 +127,23 @@ export default function UserReg() {
                         </Form.Label>
                         <Col sm="5">
                     <Form.Control as="select" onChange={event=>setSchool(event.target.value)} required onChange={event => setOpacity()}>
-                        {[1,2,3].map((profession,index)=>
-                            <option key={index} value={profession.id} >{profession}</option>
-                    <Form.Control as="select" required onChange={event => {selectClass(event.target.value)}}>
-                        <option selected="true" disabled="disabled">Válassz iskolát!</option>
-                        {schools.map((school,index)=>
-                            <option key={index} value={school.name}>{school.name}</option>
-                        )}
+
+                    {[1,2,3].map((profession,index)=>
+                        
+                        <option key={index} value={profession.id} >{profession}</option>
+                    )}
+                        </Form.Control>
+
+                        <Form.Control as="select" required onChange={event => {selectClass(event.target.value)}}>
+
+                            <option selected="true" disabled="disabled">Válassz iskolát!</option>
+
+                    {schools.map((school,index)=>
+
+                        <option key={index} value={school.name}>{school.name}</option>
+                    
+                    )}
+
                     </Form.Control>
                         </Col>
                     </Form.Group>
