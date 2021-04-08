@@ -52,11 +52,11 @@ const getXpByMemberId = async (userId) =>{
 }
 
 const getPlayedExercisesCountByMemberId = async (userId) =>{
-    return await axios.get(BASE_URL+"/gameHistory/getPlayedExercisesCountByMemberId?memberId="+userId);
+    return await axios.get(BASE_URL+"/gameHistory/getPlayedExercisesCountByMemberId?memberId="+userId,{withCredentials:true});
 }
 
 const getIsSessionActiveByUserId = async (userId) =>{
-    return await axios.get(BASE_URL+"/gameSession/isActive?userId="+userId);
+    return await axios.get(BASE_URL+"/gameSession/isActive?userId="+userId,{withCredentials:true});
 }
 
 
@@ -112,6 +112,23 @@ const updateProfession = async (profession) =>{
     return await axios.put(BASE_URL+"/profession/",profession);
 }
 
+const register = async (user) =>{
+    return await axios.post(BASE_URL+"/auth/register",user,{withCredentials:true});
+}
+
+const login = async (user) =>{
+    return await axios.post(BASE_URL+"/auth/login",user);
+}
+
+const getUsernameFromToken = async () =>{
+    let token=localStorage.getItem("token");
+    console.log("token: "+token);
+    return await axios.get(BASE_URL+"/auth/me");
+}
+
+
+
+
 
 export {
     getCardByIdentificationId,
@@ -138,6 +155,10 @@ export {
     deleteProfession,
     getProfessionById,
     updateProfession,
+    registrationPage,
+    register,
+    login,
+    getUsernameFromToken,
     getAllSchool,
-    getClassesById
+    getClassesById,
 };

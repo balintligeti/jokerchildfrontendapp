@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import {getIsSessionActiveByUserId} from "../context/ApiCalls"
+import {getIsSessionActiveByUserId,getUsernameFromToken} from "../context/ApiCalls"
 import { Navbar, Nav } from 'react-bootstrap';
 import './pinkInfo.css'
 export default function Navbar1() {
@@ -7,10 +7,14 @@ export default function Navbar1() {
   const [isSessionActive,setIsSessionActive]=useState(null);
 
   useEffect(()=>{
-      getIsSessionActiveByUserId(0) // fix value until login is not implemented
-          .then((data)=>{
-              setIsSessionActive(data.data);
-          })
+    getUsernameFromToken(localStorage.getItem("token"))
+    .then((response)=>{
+        getIsSessionActiveByUserId(response.data)
+        .then((data)=>{
+            setIsSessionActive(data.data);
+        })
+    })
+
   })
 
   if (window.location.pathname === "/getid" || window.location.pathname === "/userreg" || window.location.pathname === "/teacherreg" || window.location.pathname === "/" || window.location.pathname === "/Questions" || window.location.pathname === "/answer/:questionId" || window.location.pathname === "/statistics" || window.location.pathname === "/profil" || window.location.pathname === "/succesful") {

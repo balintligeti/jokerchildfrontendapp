@@ -5,7 +5,7 @@ import urhajos from "../pics/urhajos.png"
 import MiniCard from "../1small/MiniCard"
 import "./questions.css"
 import {getSessionsCardByUserId,getExperienceByExerciseIdAndUserId,deleteSessionByUserId,
-createGameHistory,getIsGameHistoryActiveByExerciseIdAndUserId} from "../context/ApiCalls"
+createGameHistory,getIsGameHistoryActiveByExerciseIdAndUserId, getUsernameFromToken} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
 import 'reactjs-popup/dist/index.css';
 import BigButton from '../1small/BigButton'
@@ -24,46 +24,47 @@ export default function Questions() {
     const [currentPointsByCard,setCurrentPointsByCard]=useState(0);
 
     const [isRenderable,setIsRenderable]=useState(false);
- 
-
 
     
     const answerQuestion = (questionId) =>{
 
-        let gameHistory={
-            "cardId": card.id,
-            "exerciseId": card.exercises[questionId].id,
-            "memberId": 0  //Todo set player's id  
-        }
-
-        getIsGameHistoryActiveByExerciseIdAndUserId(card.exercises[questionId].id,0)
-            .then((data)=> data.data ?
-                (
-                    history.push(`/Answer/${questionId}`) 
-                ) 
-                : 
-                (
-                    createGameHistory(gameHistory)
-                        .then(history.push(`/Answer/${questionId}`))
-                ))
-              
+        getUsernameFromToken(localStorage.getItem("token"))
+        .then((response)=>{
+            let gameHistory={
+                "cardId": card.id,
+                "exerciseId": card.exercises[questionId].id,
+                "memberId": response.data
+            };
+            getIsGameHistoryActiveByExerciseIdAndUserId(card.exercises[questionId].id,response.data)
+                .then((data)=> data.data ?
+                    (
+                        history.push(`/Answer/${questionId}`) 
+                    ) 
+                    : 
+                    (
+                        createGameHistory(gameHistory)
+                            .then(history.push(`/Answer/${questionId}`))
+                    ))
+        })          
     }
 
     const getNewCard=()=>{
-        deleteSessionByUserId(0) // 0 hard coded for basic user Todo change
-            .then(history.push("/GetId"),
-            window.location.reload() //Needs to reload navbar
-            ); 
+        getUsernameFromToken(localStorage.getItem("token"))
+        .then((response)=>
+            deleteSessionByUserId(response.data)
+                .then(history.push("/GetId")),
+                ); 
     }
 
     useEffect(()=>{
         let dict2=new Map();
         
-        getSessionsCardByUserId(0) // fix value until login is not implemented
+        getUsernameFromToken(localStorage.getItem("token")).then((response)=>
+        getSessionsCardByUserId(response.data)
             .then((data)=>{
                 setCard(data.data);
                 data.data.exercises.forEach((exercise)=>{
-                    getExperienceByExerciseIdAndUserId(exercise.id,0) // 0 will be the userId
+                    getExperienceByExerciseIdAndUserId(exercise.id,response.data) 
                     .then((data2)=>{                        
                         dict2.set(exercise.id,data2.data);
                         setMaximumPointsByCard(maximumPointsByCard=>maximumPointsByCard+MAXIMUM_POINT_BY_QUESTION)
@@ -76,7 +77,7 @@ export default function Questions() {
                         
                     })
                 })
-            })
+            }))
     },[])
 
 

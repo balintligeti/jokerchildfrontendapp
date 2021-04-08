@@ -1,7 +1,7 @@
 import React,{useState}from 'react'
 import PinkInfo from "../1medium/PinkInfo"
 import "./getId.css"
-import {getCardByIdentificationId,createSession} from "../context/ApiCalls"
+import {getCardByIdentificationId,createSession,getUsernameFromToken} from "../context/ApiCalls"
 import { useHistory } from 'react-router-dom'
 import BigButton from '../1small/BigButton'
 
@@ -13,14 +13,17 @@ export default function GetId() {
     const [identificationId,setIdentificationId]=useState("");
 
     const onValidIdentificationId = (cardData) =>{
-        let session={
-            "userId":0,
-            "cardId":cardData.id
-        }
-        createSession(session).then(
-            history.push("/Questions"),
-            window.location.reload() //Need to reload the navbar
-            );
+        getUsernameFromToken(localStorage.getItem("token"))
+        .then((response)=>{
+            let session={
+                "userId":response.data,
+                "cardId":cardData.id
+            }
+            createSession(session).then(
+                history.push("/Questions"),
+                window.location.reload() //Need to reload the navbar
+                );
+        })
         
     }
 

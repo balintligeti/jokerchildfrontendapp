@@ -17,10 +17,18 @@ import UpdateProfession from "./1big/UpdateProfession";
 import Succesful from "./1big/Succesful";
 import UserReg from "./1big/UserReg";
 import TeacherReg from "./1big/TeacherReg";
+import axios from "axios";
 import Login from "./1big/Login";
 
 
 const App = () => {
+
+    axios.interceptors.request.use(function (config) {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+
+    return config;
+  });
 
     return (
         <Router>

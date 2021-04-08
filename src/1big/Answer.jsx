@@ -4,7 +4,7 @@ import "./getId.css";
 import "./answer.css";
 import "./questions.css";
 import { Link } from 'react-router-dom';
-import {getSessionsCardByUserId} from "../context/ApiCalls";
+import {getSessionsCardByUserId,getUsernameFromToken} from "../context/ApiCalls";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PopupButton from "../1small/PopupButton";
 import MiniCard from "../1small/MiniCard";
@@ -19,7 +19,8 @@ export default function DndTest(props) {
     const [help, setHelp] = useState(null)
 
     useEffect(()=>{
-        getSessionsCardByUserId(0) // fix value until login is not implemented
+        getUsernameFromToken(localStorage.getItem("token")).then((response)=>
+            getSessionsCardByUserId(response.data)
             .then((data)=>{
                 setQuestion(data.data.exercises[questionId].question);
                 setExerciseId(data.data.exercises[questionId].id)
@@ -37,7 +38,7 @@ export default function DndTest(props) {
                         selected: getItems(0),
                     }
                 })
-            })           
+            }))           
     },[questionId])
     
     const [state,setState] = useState({
