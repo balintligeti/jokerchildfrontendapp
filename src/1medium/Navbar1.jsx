@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import {getIsSessionActiveByUserId} from "../context/ApiCalls"
+import {getIsSessionActiveByUserId,getUsernameFromToken} from "../context/ApiCalls"
 import { Navbar, Nav } from 'react-bootstrap';
 import './pinkInfo.css'
 export default function Navbar1() {
@@ -7,20 +7,17 @@ export default function Navbar1() {
   const [isSessionActive,setIsSessionActive]=useState(null);
 
   useEffect(()=>{
-      getIsSessionActiveByUserId(0) // fix value until login is not implemented
-          .then((data)=>{
-              setIsSessionActive(data.data);
-          })
+        getIsSessionActiveByUserId(0)
+        .then((data)=>{
+            setIsSessionActive(data.data);
+        })
+    
   })
 
   if (window.location.pathname === "/getid" || window.location.pathname === "/userreg" || window.location.pathname === "/teacherreg" || window.location.pathname === "/" || window.location.pathname === "/Questions" || window.location.pathname === "/answer/:questionId" || window.location.pathname === "/statistics" || window.location.pathname === "/profil" || window.location.pathname === "/succesful") {
     return (
       <div >
-        {isSessionActive == null ? (
-          <div></div>
-        ) 
-        : 
-        (
+        
           <Navbar collapseOnSelect expand="lg"  style={{backgroundColor: "#7749f8", borderRadius: "20px", marginTop:"1vw", marginLeft:'20vw', marginRight: '20vw', fontFamily:"Courier New, courier, monospace", fontSize:'180%'}} variant="dark">
           <Nav className="m-auto">
             <Nav.Link href="/" style={{color: "white"}}>Kezdőlap</Nav.Link>
@@ -34,9 +31,7 @@ export default function Navbar1() {
             <Nav.Link href="/statistics" style={{color: "white"}}>Statisztikák</Nav.Link>
             <Nav.Link href="/profil" style={{color: "white"}}>Profil</Nav.Link>
           </Nav>
-        </Navbar>
-        )}
-   
+        </Navbar>   
       </div>
     )
   } else {

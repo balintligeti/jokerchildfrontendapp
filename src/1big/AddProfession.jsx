@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
-import PurpleButton from "../1small/PurpleButton";
 import { createProfession } from '../context/ApiCalls';
 import { useHistory } from 'react-router-dom'
 import BigButton from '../1small/BigButton'

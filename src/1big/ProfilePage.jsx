@@ -1,5 +1,5 @@
 import React from 'react'
-import {deleteAllGameHistoryByUserId} from "../context/ApiCalls"
+import {deleteAllGameHistoryByUserId,getUsernameFromToken} from "../context/ApiCalls"
 import PurpleButton from "../1small/PurpleButton"
 
 
@@ -8,8 +8,9 @@ export default function ProfilePage() {
 
     const resetProfile = () =>{
         //TODO:reset xp
-        deleteAllGameHistoryByUserId(0)
-        .then((data)=>console.log(data.data))
+       
+            deleteAllGameHistoryByUserId(0)
+                .then((data)=>console.log(data.data))
     }
 
     return(<div>
